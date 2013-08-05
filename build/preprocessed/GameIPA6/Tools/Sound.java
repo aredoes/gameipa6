@@ -39,7 +39,8 @@ public class Sound {
             clg = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/Cling.wav"), "audio/wav");
             bp = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/button-9.wav"), "audio/wav");
             arg = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/arg.wav"), "audio/wav");
-            b1 = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/b1.mp3"), "audio/mp3");
+            b1 = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/arg.wav"), "audio/wav");
+//            b1 = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/b1.mp3"), "audio/mp3");
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (MediaException ex) {
@@ -103,7 +104,7 @@ public class Sound {
                         arg.start();
                         break;
                     case (101):
-                        if (i > b1.getMediaTime()) {
+                        if (i > 2000) {
                             b1.deallocate();
                             i = 0;
                         } else {

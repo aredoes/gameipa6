@@ -1,6 +1,0 @@
--dontusemixedcaseclassnames
--defaultpackage ''
--overloadaggressively
--keep public class ** {
-    public *;
-}

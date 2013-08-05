@@ -5,6 +5,7 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
+import GameIPA6.Tools.*;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
@@ -20,9 +21,15 @@ public class StateLoadingLevel2 implements State {
     private String kalimat[] = {"", "", "", ""};
     private boolean next;
     private Image cek, pilih;
+    private Sound sound;
+    private Tools t;
+    private LoadInisialisasi ins;    
 
     public StateLoadingLevel2(Canvas c) {
         this.c = c;
+        this.sound = new Sound();
+        this.t = new Tools();
+        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {

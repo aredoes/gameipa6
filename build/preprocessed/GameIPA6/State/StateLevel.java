@@ -5,6 +5,7 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
+import GameIPA6.Tools.*;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
@@ -17,9 +18,13 @@ public class StateLevel implements State {
 
     private Canvas c;
     private Image imgLevelMenu, imgLevelLocked, imgExit, imgSound, background;
+    private Sound sound;
+    private Tools t;
 
     public StateLevel(Canvas c) {
         this.c = c;
+        this.sound = new Sound();
+        this.t = new Tools();
     }
 
     public void inisialisasi() {

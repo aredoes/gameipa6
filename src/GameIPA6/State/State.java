@@ -15,11 +15,11 @@ import javax.microedition.lcdui.Graphics;
  */
 public interface State {
     
-    Tools t = new Tools();
-
-    LoadInisialisasi ins = new LoadInisialisasi();
-    
-    Sound sound = new Sound();
+//    Tools t = new Tools();
+//
+//    LoadInisialisasi ins = new LoadInisialisasi();
+//    
+//    Sound sound = new Sound();
 
     public abstract void inisialisasi();
 
@@ -31,3 +31,5 @@ public interface State {
 
     public abstract void tapEvent(int x, int y);
 }
+
+

@@ -5,6 +5,9 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
+import GameIPA6.Tools.LoadInisialisasi;
+import GameIPA6.Tools.Sound;
+import GameIPA6.Tools.Tools;
 import javax.microedition.lcdui.Graphics;
 
 /**
@@ -16,9 +19,15 @@ public class StateLevel1aa implements State {
     private Canvas c;
     private boolean salah, benar;
     private int x, i;
+    private Sound sound;
+    private Tools t;
+    private LoadInisialisasi ins;  
 
     public StateLevel1aa(Canvas c) {
         this.c = c;
+        this.sound = new Sound();
+        this.t = new Tools();
+        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {

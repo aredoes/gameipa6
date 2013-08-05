@@ -1,5 +1,0 @@
--dontusemixedcaseclassnames
--defaultpackage ''
--keep class ** {
-    public *;
-}

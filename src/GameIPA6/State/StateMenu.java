@@ -5,9 +5,11 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
+import GameIPA6.Tools.Sound;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
+
 
 /**
  *
@@ -17,14 +19,16 @@ public class StateMenu implements State {
 
     private Canvas c;
     private Image imgMenu;
+    private Sound s;
 
     public StateMenu(Canvas c) {
+        this.s = new Sound();
         this.c = c;
     }
 
     public void inisialisasi() {
         try {
-            if (sound.getSilent() == true) {
+            if (s.getSilent() == true) {
                 imgMenu = Image.createImage("/GameIPA6/Image/homemute.png");
             } else {
                 imgMenu = Image.createImage("/GameIPA6/Image/home.png");
@@ -35,7 +39,7 @@ public class StateMenu implements State {
     }
 
     public void updateLogika() {
-        sound.play(sound.backsound1);
+        s.play(s.backsound1);
     }
 
     public void updateGambar(Graphics g) {
@@ -48,7 +52,7 @@ public class StateMenu implements State {
 
     public void tapEvent(int x, int y) {
         if (x > 40 && y > 187 && x < 126 && y < 234) {
-            sound.play(sound.beep);
+            s.play(s.beep);
             c.pindahState(c.stateLoading);
         }
         if (x > 131 && y > 245 && x < 216 && y < 290) {
@@ -56,14 +60,14 @@ public class StateMenu implements State {
         }
         if (x > 42 && y > 289 && x < 121 && y < 351) {
             try {
-                if (sound.getSilent() == true) {
-                    sound.play(sound.backsound1);
+                if (s.getSilent() == true) {
+                    s.play(s.backsound1);
                     imgMenu = Image.createImage("/GameIPA6/Image/home.png");
-                    sound.setSilent(false);
+                    s.setSilent(false);
                 } else {
-                    sound.play(sound.stop);
+                    s.play(s.stop);
                     imgMenu = Image.createImage("/GameIPA6/Image/homemute.png");
-                    sound.setSilent(true);
+                    s.setSilent(true);
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
