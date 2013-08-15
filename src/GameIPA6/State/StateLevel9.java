@@ -5,12 +5,7 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
-import GameIPA6.Tools.LoadInisialisasi;
-import GameIPA6.Tools.Sound;
-import GameIPA6.Tools.Tools;
-import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
-import javax.microedition.lcdui.Image;
 
 /**
  *
@@ -19,55 +14,43 @@ import javax.microedition.lcdui.Image;
 public class StateLevel9 implements State {
 
     private Canvas c;
-    private Image tataSurya;
     private boolean win, gagal, matahari, merkurius, venus, bumi, mars, yupiter, saturnus, uranus, neptunus;
     private String tugas = "";
     private String[] planet = {"", "", "", "", "", "", "", "", ""};
     private int i, tgs, time;
-    private Sound sound;
-    private Tools t;
-    private LoadInisialisasi ins;  
 
     public StateLevel9(Canvas c) {
         this.c = c;
-        this.sound = new Sound();
-        this.t = new Tools();
-        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {
-        try {
-            i = 0;
-            win = false;
-            tgs = 0;
-            time = 300;
-            gagal = false;
-            matahari = false;
-            merkurius = false;
-            venus = false;
-            bumi = false;
-            mars = false;
-            yupiter = false;
-            saturnus = false;
-            uranus = false;
-            neptunus = false;
-            planet[0] = "";
-            planet[1] = "";
-            planet[2] = "";
-            planet[3] = "";
-            planet[4] = "";
-            planet[5] = "";
-            planet[6] = "";
-            planet[7] = "";
-            planet[8] = "";
-            tataSurya = Image.createImage("/GameIPA6/Image/bab9/tatasurya.png");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        i = 0;
+        win = false;
+        tgs = 0;
+        time = 300;
+        gagal = false;
+        matahari = false;
+        merkurius = false;
+        venus = false;
+        bumi = false;
+        mars = false;
+        yupiter = false;
+        saturnus = false;
+        uranus = false;
+        neptunus = false;
+        planet[0] = "";
+        planet[1] = "";
+        planet[2] = "";
+        planet[3] = "";
+        planet[4] = "";
+        planet[5] = "";
+        planet[6] = "";
+        planet[7] = "";
+        planet[8] = "";
     }
 
     public void updateLogika() {
-        sound.play(sound.backsound1);
+        c.sound.play(c.sound.backsound1);
         if (tgs > 0) {
             time--;
         }
@@ -133,9 +116,9 @@ public class StateLevel9 implements State {
         }
 
         //nyawa habis
-        if (t.life == 0) {
+        if (c.t.life == 0) {
             c.pindahState(c.stateLevel);
-            t.life = 3;
+            c.t.life = 3;
         }
     }
 
@@ -148,18 +131,21 @@ public class StateLevel9 implements State {
             g.setColor(0, 0, 0);
             g.drawString("Klik disini...", c.getWidth() / 2, c.getHeight() / 2 + 15, Graphics.BASELINE | Graphics.HCENTER);
         } else {
-            t.background(g, c, 0x000000);
-            g.drawImage(ins.imgBackground, c.getWidth() / 2, c.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+            c.t.background(g, c, 0x000000);
+            g.drawImage(c.ins.imgBackground, c.getWidth() / 2, c.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
 
             //tata surya
-            g.drawImage(tataSurya, c.getWidth() / 2, tataSurya.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+            g.drawImage(c.ins.tataSurya, c.getWidth() / 2, c.ins.tataSurya.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+            g.drawImage(c.ins.pilih, c.getWidth() / 2, c.ins.pilih.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
 
+            
             //tugas
             g.setColor(0, 0, 255);
             g.fillRect(0, c.getHeight() - 110, c.getWidth(), 50);
             g.setColor(255, 255, 255);
-            g.drawString(tugas, c.getWidth() / 2, c.getHeight() - 80, Graphics.HCENTER | Graphics.BASELINE);
-            t.petunjuk(g, c, "Pilih planet", "sesuai pada posisinya");
+            g.drawString(tugas, c.getWidth() / 2, c.getHeight() - 80, Graphics.HCENTER | Graphics.BASELINE);            g.drawString(tugas, c.getWidth() / 2, c.getHeight() - 80, Graphics.HCENTER | Graphics.BASELINE);
+                        
+            c.t.petunjuk(g, c, "Pilih planet", "sesuai pada posisinya");
 
             //hasil
             g.setColor(0xffffff);
@@ -174,16 +160,17 @@ public class StateLevel9 implements State {
 //            g.drawString("8. " + planet[7], c.getWidth() / 2, 270, Graphics.HCENTER | Graphics.BASELINE);
 //            g.drawString("9. " + planet[8], c.getWidth() / 2, 285, Graphics.HCENTER | Graphics.BASELINE);
 
+            
             //icon
-            t.icon(g, c, "Level 9");
+            c.t.icon(g, c, "Level 9");
 
             if (win) {
-                t.win(g, c, true);
+                c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    sound.play(sound.berubah);
-                    if (t.level == 8) {
-                        t.level++;
+                    c.sound.play(c.sound.berubah);
+                    if (c.t.level == 8) {
+                        c.t.level++;
                     }
                     c.pindahState(c.stateLevel);
                 }
@@ -201,7 +188,7 @@ public class StateLevel9 implements State {
         planet[6] = "";
         planet[7] = "";
         planet[8] = "";
-        tataSurya = null;
+        c.ins.hapusBab9();
     }
 
     public void tapEvent(int x, int y) {
@@ -209,70 +196,70 @@ public class StateLevel9 implements State {
             if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
                 gagal = false;
                 time = 300;
-                t.life--;
+                c.t.life--;
             }
         } else {
-            t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
             //matahari
             if (x > 204 && x < 240 && y > 0 && y < 53) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 matahari = true;
                 planet[0] = tugas;
                 tgs++;
             }
             //merkurius
             if (x > 195 && x < 206 && y > 65 && y < 73) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 merkurius = true;
                 planet[1] = tugas;
                 tgs++;
             }
             //venus
             if (x > 179 && x < 193 && y > 84 && y < 93) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 venus = true;
                 planet[2] = tugas;
                 tgs++;
             }
             //bumi
             if (x > 154 && x < 173 && y > 100 && y < 116) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 bumi = true;
                 planet[3] = tugas;
                 tgs++;
             }
             //mars
             if (x > 134 && x < 152 && y > 124 && y < 140) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 mars = true;
                 planet[4] = tugas;
                 tgs++;
             }
             //yupiter
             if (x > 83 && x < 138 && y > 148 && y < 184) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 yupiter = true;
                 planet[5] = tugas;
                 tgs++;
             }
             //saturnus
             if (x > 53 && x < 83 && y > 196 && y < 221) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 saturnus = true;
                 planet[6] = tugas;
                 tgs++;
             }
             //uranus
             if (x > 28 && x < 47 && y > 225 && y < 242) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 uranus = true;
                 planet[7] = tugas;
                 tgs++;
             }
             //neptunus
             if (x > 3 && x < 28 && y > 250 && y < 271) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 neptunus = true;
                 planet[8] = tugas;
                 tgs++;

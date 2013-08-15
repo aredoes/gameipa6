@@ -5,9 +5,6 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
-import GameIPA6.Tools.LoadInisialisasi;
-import GameIPA6.Tools.Sound;
-import GameIPA6.Tools.Tools;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
@@ -22,46 +19,31 @@ public class StateLoadingLevel5 implements State {
     private int count, story, page;
     private String kalimat[] = {"", "", "", "", "", ""};
     private boolean next;
-    private Image cek, apimerah, apibiru;
-    private Sound sound;
-    private Tools t;
-    private LoadInisialisasi ins;  
 
     public StateLoadingLevel5(Canvas c) {
         this.c = c;
-        this.sound = new Sound();
-        this.t = new Tools();
-        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {
-        try {
-            count = 0;
-            story = 1;
-            page = 1;
-            next = false;
-            kalimat[0] = "Logam merupakan konduktor";
-            kalimat[1] = "panas yang dapat meng";
-            kalimat[2] = "hantarkan panas dengan baik";
-            kalimat[3] = "Plastik merupakan isolator";
-            kalimat[4] = "panas yang tidak dapat";
-            kalimat[5] = "menghantarkan panas";
-            apimerah = Image.createImage("/GameIPA6/Image/bab5/apimerahkanan.png");
-            apibiru = Image.createImage("/GameIPA6/Image/bab5/apibirukanan.png");
-            cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
+        count = 0;
+        story = 1;
+        page = 1;
+        next = false;
+        kalimat[0] = "Logam merupakan konduktor";
+        kalimat[1] = "panas yang dapat meng";
+        kalimat[2] = "hantarkan panas dengan baik";
+        kalimat[3] = "Plastik merupakan isolator";
+        kalimat[4] = "panas yang tidak dapat";
+        kalimat[5] = "menghantarkan panas";
     }
 
     public void updateLogika() {
-        if (count > 8) {
+        if (count > 9) {
             page = 2;
         } else {
             try {
-                ins.bab5(count);
-                Thread.sleep(1000);
+                c.ins.bab5(count);
+                Thread.sleep(600);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (InterruptedException ex) {
@@ -96,16 +78,16 @@ public class StateLoadingLevel5 implements State {
             case (2):
                 switch (story) {
                     case (1):
-                        g.drawImage(ins.story1, c.getWidth() / 2, 100 + ins.story1.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawString("Sendi disuru mamanya", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("untuk mandi pagi", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("sebelum sekolah", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawImage(c.ins.story1, c.getWidth() / 2, 100 + c.ins.story1.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawString("Sendi disuru mamanya", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("untuk mandi pagi", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("sebelum sekolah", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
                         break;
                     case (2):
-                        g.drawImage(ins.story2, c.getWidth() / 2, 100 + ins.story2.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawString("Dia berencana meng", c.getWidth() / 2, c.getHeight() / 2 + ins.story2.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("gunakan pipa ajaib", c.getWidth() / 2, c.getHeight() / 2 + ins.story2.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("dibawah bak mandinya", c.getWidth() / 2, c.getHeight() / 2 + ins.story2.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawImage(c.ins.story2, c.getWidth() / 2, 100 + c.ins.story2.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawString("Dia berencana meng", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story2.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("gunakan pipa ajaib", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story2.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("dibawah bak mandinya", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story2.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
                         break;
                     case (3):
                         g.setColor(0x9f9d9d);
@@ -120,14 +102,14 @@ public class StateLoadingLevel5 implements State {
                         g.drawString("Ubah pipa menjadi logam", c.getWidth() / 2, 170, Graphics.BASELINE | Graphics.HCENTER);
                         g.drawString("Ubah pipa menjadi plastik", c.getWidth() / 2, 270, Graphics.BASELINE | Graphics.HCENTER);
 
-                        g.drawImage(apimerah, c.getWidth() * 1 / 4, 305, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawImage(apibiru, c.getWidth() * 3 / 4, 305, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawImage(c.ins.apimerah, c.getWidth() * 1 / 4, 305, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawImage(c.ins.apibiru, c.getWidth() * 3 / 4, 305, Graphics.HCENTER | Graphics.VCENTER);
 
                         g.drawString("Bersifat panas", c.getWidth() * 1 / 4, 340, Graphics.BASELINE | Graphics.HCENTER);
                         g.drawString("Bersifat dingin", c.getWidth() * 3 / 4, 340, Graphics.BASELINE | Graphics.HCENTER);
                         break;
                 }
-                g.drawImage(cek, c.getWidth() - cek.getWidth() / 2, c.getHeight() - cek.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.cek, c.getWidth() - c.ins.cek.getWidth() / 2, c.getHeight() - c.ins.cek.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
                 if (next) {
                     c.pindahState(c.stateLevel5);
                 }
@@ -136,18 +118,20 @@ public class StateLoadingLevel5 implements State {
     }
 
     public void hapusResource() {
-        cek = null;
+        c.ins.cek = null;
+        c.ins.story1 = null;
+        c.ins.story2 = null;
     }
 
     public void tapEvent(int x, int y) {
         if (page == 2) {
-            if (x > c.getWidth() - cek.getWidth() && x < c.getWidth() && y > c.getHeight() - cek.getHeight() && y < c.getHeight()) {
+            if (x > c.getWidth() - c.ins.cek.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.cek.getHeight() && y < c.getHeight()) {
                 if (story < 3) {
                     story++;
-                    sound.play(sound.menu);
+                    c.sound.play(c.sound.menu);
                 } else {
                     next = true;
-                    sound.play(sound.berubah);
+                    c.sound.play(c.sound.berubah);
                 }
             }
         }

@@ -16,7 +16,7 @@ import javax.microedition.lcdui.game.Sprite;
 public class LoadInisialisasi {
 
     public GameDesign gd;
-    public Image imgLeftArrow, imgRightArrow, imgFire, imgCheck, imgBackground, imgRun, pilih, story1, story2;
+    public Image imgLeftArrow, imgRightArrow, imgFire, imgCheck, imgBackground, imgRun, pilih, story1, story2, cek, gmb;
     //bab1
     public Image cicak, ular, bebek, balok;
     public Sprite cicakSprite, balokHalang1, balokHalang2;
@@ -29,13 +29,12 @@ public class LoadInisialisasi {
     //bab5
     public Image bak, air, pipa, apibirukanan, apimerahkanan, apibiru, apimerah;
     //bab6
-    public Image gmb;
     //bab7
     public Sprite pendorong;
     //bab8
     public Image rumah, jendela, listrik;
     //bab9
-    public Image tataSurya;
+    public Image tataSurya, ttsurya;
 
     public void bab1(int i) throws IOException {
         switch (i) {
@@ -75,6 +74,9 @@ public class LoadInisialisasi {
             case (11):
                 story2 = Image.createImage("/GameIPA6/Image/bab1/story2.png");
                 break;
+            case (12):
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
+                break;
         }
     }
 
@@ -113,6 +115,12 @@ public class LoadInisialisasi {
             case (10):
                 story2 = Image.createImage("/GameIPA6/Image/bab2/story2.png");
                 break;
+            case (11):
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
+                break;
+            case (12):
+                gmb = Image.createImage("/GameIPA6/Image/bab2/pilihhint.png");
+                break;
         }
     }
 
@@ -138,6 +146,9 @@ public class LoadInisialisasi {
                 break;
             case (6):
                 story2 = Image.createImage("/GameIPA6/Image/bab3/story2.png");
+                break;
+            case (7):
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
                 break;
         }
     }
@@ -171,6 +182,9 @@ public class LoadInisialisasi {
             case (8):
                 story2 = Image.createImage("/GameIPA6/Image/bab4/story2.png");
                 break;
+            case (9):
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
+                break;
         }
     }
 
@@ -203,21 +217,27 @@ public class LoadInisialisasi {
             case (8):
                 story2 = Image.createImage("/GameIPA6/Image/bab5/story2.png");
                 break;
+            case (9):
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
+                break;
         }
     }
 
     public void bab6(int i) throws IOException {
         switch (i) {
             case (0):
-                gmb = Image.createImage("/GameIPA6/Image/bab6/panci.png");
-                break;
-            case (1):
                 pilih = Image.createImage("/GameIPA6/Image/bab6/pilih.png");
                 break;
+            case (1):
+                gmb = Image.createImage("/GameIPA6/Image/bab8/bab8hint.png");
+                break;
             case (2):
-                story1 = Image.createImage("/GameIPA6/Image/bab6/story1.png");
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
                 break;
             case (3):
+                story1 = Image.createImage("/GameIPA6/Image/bab6/story1.png");
+                break;
+            case (4):
                 story2 = Image.createImage("/GameIPA6/Image/bab6/story2.png");
                 break;
         }
@@ -243,6 +263,9 @@ public class LoadInisialisasi {
             case (5):
                 story2 = Image.createImage("/GameIPA6/Image/bab7/story2.png");
                 break;
+            case (6):
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
+                break;
         }
     }
 
@@ -263,6 +286,9 @@ public class LoadInisialisasi {
             case (4):
                 story2 = Image.createImage("/GameIPA6/Image/bab8/story2.png");
                 break;
+            case (5):
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
+                break;
         }
     }
 
@@ -272,13 +298,22 @@ public class LoadInisialisasi {
                 tataSurya = Image.createImage("/GameIPA6/Image/bab9/tatasurya.png");
                 break;
             case (1):
-                imgBackground = Image.createImage("/GameIPA6/Image/bab9/angkasabackground.png");
+                pilih = Image.createImage("/GameIPA6/Image/bab9/pilih.png");
                 break;
             case (2):
-                story1 = Image.createImage("/GameIPA6/Image/bab9/story1.png");
+                imgBackground = Image.createImage("/GameIPA6/Image/bab9/angkasabackground.png");
                 break;
             case (3):
+                story1 = Image.createImage("/GameIPA6/Image/bab9/story1.png");
+                break;
+            case (4):
                 story2 = Image.createImage("/GameIPA6/Image/bab9/story2.png");
+                break;
+            case (5):
+                ttsurya = Image.createImage("/GameIPA6/Image/bab9/tatasurya.png");
+                break;
+            case (6):
+                cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
                 break;
         }
     }
@@ -294,8 +329,6 @@ public class LoadInisialisasi {
         balokHalang1 = null;
         balokHalang2 = null;
         gd = null;
-        story1 = null;
-        story2 = null;
     }
 
     public void hapusBab2() {
@@ -308,8 +341,6 @@ public class LoadInisialisasi {
         pinggul = null;
         sperma = null;
         ovarium = null;
-        story1 = null;
-        story2 = null;
     }
 
     public void hapusBab3() {
@@ -341,7 +372,6 @@ public class LoadInisialisasi {
     }
 
     public void hapusBab6() {
-        gmb = null;
         pilih = null;
     }
 
@@ -360,6 +390,7 @@ public class LoadInisialisasi {
 
     public void hapusBab9() {
         tataSurya = null;
+        pilih = null;
         imgBackground = null;
     }
 }

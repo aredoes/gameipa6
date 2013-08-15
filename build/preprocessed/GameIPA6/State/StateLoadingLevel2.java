@@ -5,7 +5,6 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
-import GameIPA6.Tools.*;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
@@ -20,42 +19,29 @@ public class StateLoadingLevel2 implements State {
     private int page, story, count;
     private String kalimat[] = {"", "", "", ""};
     private boolean next;
-    private Image cek, pilih;
-    private Sound sound;
-    private Tools t;
-    private LoadInisialisasi ins;    
 
     public StateLoadingLevel2(Canvas c) {
         this.c = c;
-        this.sound = new Sound();
-        this.t = new Tools();
-        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {
-        try {
-            count = 0;
-            page = 1;
-            story = 1;
-            next = false;
-            cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
-            pilih = Image.createImage("/GameIPA6/Image/bab2/pilihhint.png");
-            kalimat[0] = "Pada masa pubertas,";
-            kalimat[1] = "manusia mengalami";
-            kalimat[2] = "perkembangan ciri-ciri";
-            kalimat[3] = "kelamin primer & sekunder";
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        count = 0;
+        page = 1;
+        story = 1;
+        next = false;
+        kalimat[0] = "Pada masa pubertas,";
+        kalimat[1] = "manusia mengalami";
+        kalimat[2] = "perkembangan ciri-ciri";
+        kalimat[3] = "kelamin primer & sekunder";
     }
 
     public void updateLogika() {
-        if (count > 10) {
+        if (count > 12) {
             page = 2;
         } else {
             try {
-                ins.bab2(count);
-                Thread.sleep(1000);
+                c.ins.bab2(count);
+                Thread.sleep(500);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (InterruptedException ex) {
@@ -86,25 +72,25 @@ public class StateLoadingLevel2 implements State {
             case (2):
                 switch (story) {
                     case (1):
-                        g.drawImage(ins.story1, c.getWidth() / 2, 100 + ins.story1.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawString("Seorang anak sedang", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("berbincang dengan dua", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("orang tua", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawImage(c.ins.story1, c.getWidth() / 2, 100 + c.ins.story1.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawString("Seorang anak sedang", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("berbincang dengan dua", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("orang tua", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
                         break;
                     case (2):
-                        g.drawImage(ins.story2, c.getWidth() / 2, 100 + ins.story1.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawString("Lalu, dia memperhatikan", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("perbedaan dirinya dengan", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("kedua orang tua tersebut", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawImage(c.ins.story2, c.getWidth() / 2, 100 + c.ins.story1.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawString("Lalu, dia memperhatikan", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("perbedaan dirinya dengan", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("kedua orang tua tersebut", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
                         break;
                     case (3):
-                        g.drawImage(pilih, c.getWidth() / 2, 150 + pilih.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawString("Klik pada pilihan diatas", c.getWidth() / 2, 200 + pilih.getHeight(), Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("sesuai dengan petunjuk", c.getWidth() / 2, 200 + pilih.getHeight() + 20, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("yang diberikan", c.getWidth() / 2, 200 + pilih.getHeight() + 40, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawImage(c.ins.gmb, c.getWidth() / 2, 150 + c.ins.gmb.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawString("Klik pada pilihan diatas", c.getWidth() / 2, 200 + c.ins.gmb.getHeight(), Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("sesuai dengan petunjuk", c.getWidth() / 2, 200 + c.ins.gmb.getHeight() + 20, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("yang diberikan", c.getWidth() / 2, 200 + c.ins.gmb.getHeight() + 40, Graphics.HCENTER | Graphics.BASELINE);
                         break;
                 }
-                g.drawImage(cek, c.getWidth() - cek.getWidth() / 2, c.getHeight() - cek.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.cek, c.getWidth() - c.ins.cek.getWidth() / 2, c.getHeight() - c.ins.cek.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
                 if (next) {
                     c.pindahState(c.stateLevel2);
                 }
@@ -113,19 +99,21 @@ public class StateLoadingLevel2 implements State {
     }
 
     public void hapusResource() {
-        cek = null;
-        pilih = null;
+        c.ins.cek = null;
+        c.ins.gmb = null;
+        c.ins.story1 = null;
+        c.ins.story2 = null;
     }
 
     public void tapEvent(int x, int y) {
         if (page == 2) {
-            if (x > c.getWidth() - cek.getWidth() && x < c.getWidth() && y > c.getHeight() - cek.getHeight() && y < c.getHeight()) {
+            if (x > c.getWidth() - c.ins.cek.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.cek.getHeight() && y < c.getHeight()) {
                 if (story < 3) {
                     story++;
-                    sound.play(sound.menu);
+                    c.sound.play(c.sound.menu);
                 } else {
                     next = true;
-                    sound.play(sound.berubah);
+                    c.sound.play(c.sound.berubah);
                 }
             }
         }

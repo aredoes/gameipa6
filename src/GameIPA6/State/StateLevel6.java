@@ -5,9 +5,6 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
-import GameIPA6.Tools.LoadInisialisasi;
-import GameIPA6.Tools.Sound;
-import GameIPA6.Tools.Tools;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
@@ -19,18 +16,12 @@ import javax.microedition.lcdui.Image;
 public class StateLevel6 implements State {
 
     private Canvas c;
-    private Image gmb, pilih;
+    private Image gmb;
     private int i, j, k, time, tugas;
     private boolean waktuHabis, gagal, win;
-    private Sound sound;
-    private Tools t;
-    private LoadInisialisasi ins;  
 
     public StateLevel6(Canvas c) {
         this.c = c;
-        this.sound = new Sound();
-        this.t = new Tools();
-        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {
@@ -43,14 +34,13 @@ public class StateLevel6 implements State {
             gagal = false;
             waktuHabis = false;
             gmb = Image.createImage("/GameIPA6/Image/bab6/panci.png");
-            pilih = Image.createImage("/GameIPA6/Image/bab6/pilih.png");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
     public void updateLogika() {
-        sound.play(sound.backsound1);
+        c.sound.play(c.sound.backsound1);
         if (tugas > 0 && !win) {
             time--;
         }
@@ -58,12 +48,12 @@ public class StateLevel6 implements State {
             waktuHabis = true;
             tugas = 0;
         }
-        if (t.life == 0) {
+        if (c.t.life == 0) {
             gagal = true;
             k++;
             if (k > 8) {
                 c.pindahState(c.stateLevel);
-                t.life = 3;
+                c.t.life = 3;
             }
         }
         try {
@@ -103,34 +93,34 @@ public class StateLevel6 implements State {
             g.setColor(0, 0, 0);
             g.drawString("Klik disini...", c.getWidth() / 2, c.getHeight() / 2 + 15, Graphics.BASELINE | Graphics.HCENTER);
         } else {
-            t.background(g, c, 0xffffff);
-            t.icon(g, c, "Level 6");
+            c.t.background(g, c, 0xffffff);
+            c.t.icon(g, c, "Level 6");
 
             //gambar
             g.drawImage(gmb, c.getWidth() / 2, c.getHeight() / 2 - 40, Graphics.VCENTER | Graphics.HCENTER);
-            g.drawImage(pilih, c.getWidth() / 2, c.getHeight() - pilih.getHeight() / 2 - 70, Graphics.VCENTER | Graphics.HCENTER);
+            g.drawImage(c.ins.pilih, c.getWidth() / 2, c.getHeight() - c.ins.pilih.getHeight() / 2 - 70, Graphics.VCENTER | Graphics.HCENTER);
 
             g.drawString(time + " detik", c.getWidth() / 2, 50, Graphics.BASELINE | Graphics.HCENTER);
 
             if (gagal) {
-                t.win(g, c, false);
+                c.t.win(g, c, false);
                 j++;
                 if (j > 8) {
                     gagal = false;
                     j = 0;
                 }
             } else {
-                t.petunjuk(g, c, "Terbuat dari", "apakah benda diatas?");
+                c.t.petunjuk(g, c, "Terbuat dari", "apakah benda diatas?");
             }
 
             if (win) {
-                t.win(g, c, true);
+                c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    sound.play(sound.berubah);
-                    if (t.level == 5) {
-                        if (t.level == 5) {
-                            t.level++;
+                    c.sound.play(c.sound.berubah);
+                    if (c.t.level == 5) {
+                        if (c.t.level == 5) {
+                            c.t.level++;
                         }
                     }
                     c.pindahState(c.stateLevel);
@@ -142,70 +132,70 @@ public class StateLevel6 implements State {
 
     public void hapusResource() {
         gmb = null;
-        pilih = null;
+        c.ins.hapusBab6();
     }
 
     public void tapEvent(int x, int y) {
         if (waktuHabis) {
             if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
                 waktuHabis = false;
-                t.life--;
+                c.t.life--;
                 time = 60;
             }
         } else {
-            t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
             if (x > 21 && y > 272 && x < 51 && y < 324) {
                 if (tugas == 1) {
-                    sound.play(sound.menu);
+                    c.sound.play(c.sound.menu);
                     tugas++;
                 } else {
-                    sound.play(sound.salah);
+                    c.sound.play(c.sound.salah);
                     gagal = true;
-                    t.life--;
+                    c.t.life--;
                     j = 0;
                 }
             }
             if (x > 62 && y > 272 && x < 96 && y < 324) {
                 if (tugas == 0) {
-                    sound.play(sound.menu);
+                    c.sound.play(c.sound.menu);
                     tugas++;
                 } else {
-                    sound.play(sound.salah);
+                    c.sound.play(c.sound.salah);
                     gagal = true;
-                    t.life--;
+                    c.t.life--;
                     j = 0;
                 }
             }
             if (x > 106 && y > 272 && x < 133 && y < 324) {
                 if (tugas == 3) {
-                    sound.play(sound.menu);
+                    c.sound.play(c.sound.menu);
                     tugas++;
                 } else {
-                    sound.play(sound.salah);
+                    c.sound.play(c.sound.salah);
                     gagal = true;
-                    t.life--;
+                    c.t.life--;
                     j = 0;
                 }
             }
             if (x > 141 && y > 272 && x < 177 && y < 324) {
                 if (tugas == 4) {
-                    sound.play(sound.menu);
+                    c.sound.play(c.sound.menu);
                     tugas++;
                 } else {
-                    sound.play(sound.salah);
+                    c.sound.play(c.sound.salah);
                     gagal = true;
-                    t.life--;
+                    c.t.life--;
                     j = 0;
                 }
             }
             if (x > 184 && y > 274 && x < 220 && y < 326) {
                 if (tugas == 2) {
-                    sound.play(sound.menu);
+                    c.sound.play(c.sound.menu);
                     tugas++;
                 } else {
-                    sound.play(sound.salah);
+                    c.sound.play(c.sound.salah);
                     gagal = true;
-                    t.life--;
+                    c.t.life--;
                     j = 0;
                 }
             }

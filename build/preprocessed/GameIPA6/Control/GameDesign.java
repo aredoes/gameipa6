@@ -77,7 +77,7 @@ public class GameDesign {
     public Image getCicakFull() throws java.io.IOException {//GEN-BEGIN:|4-getter|0|4-preInit
         if (CicakFull == null) {//GEN-END:|4-getter|0|4-preInit
             // write pre-init user code here
-            CicakFull = Image.createImage("/GameIPA6/Image/CicakFull.png");//GEN-BEGIN:|4-getter|1|4-postInit
+            CicakFull = Image.createImage("/GameIPA6/Image/bab1/CicakFull.png");//GEN-BEGIN:|4-getter|1|4-postInit
         }//GEN-END:|4-getter|1|4-postInit
         // write post-init user code here
         return this.CicakFull;//GEN-BEGIN:|4-getter|2|
@@ -88,7 +88,7 @@ public class GameDesign {
     public Image getCicakFullKecil() throws java.io.IOException {//GEN-BEGIN:|7-getter|0|7-preInit
         if (CicakFullKecil == null) {//GEN-END:|7-getter|0|7-preInit
             // write pre-init user code here
-            CicakFullKecil = Image.createImage("/GameIPA6/Image/CicakFullKecil.png");//GEN-BEGIN:|7-getter|1|7-postInit
+            CicakFullKecil = Image.createImage("/GameIPA6/Image/bab1/CicakFullKecil.png");//GEN-BEGIN:|7-getter|1|7-postInit
         }//GEN-END:|7-getter|1|7-postInit
         // write post-init user code here
         return this.CicakFullKecil;//GEN-BEGIN:|7-getter|2|
@@ -119,7 +119,7 @@ public class GameDesign {
     public Image getBalokHalang() throws java.io.IOException {//GEN-BEGIN:|54-getter|0|54-preInit
         if (BalokHalang == null) {//GEN-END:|54-getter|0|54-preInit
             // write pre-init user code here
-            BalokHalang = Image.createImage("/GameIPA6/Image/BalokHalang.png");//GEN-BEGIN:|54-getter|1|54-postInit
+            BalokHalang = Image.createImage("/GameIPA6/Image/bab1/BalokHalang.png");//GEN-BEGIN:|54-getter|1|54-postInit
         }//GEN-END:|54-getter|1|54-postInit
         // write post-init user code here
         return this.BalokHalang;//GEN-BEGIN:|54-getter|2|

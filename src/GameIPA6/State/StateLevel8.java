@@ -5,12 +5,7 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
-import GameIPA6.Tools.LoadInisialisasi;
-import GameIPA6.Tools.Sound;
-import GameIPA6.Tools.Tools;
-import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
-import javax.microedition.lcdui.Image;
 
 /**
  *
@@ -19,46 +14,32 @@ import javax.microedition.lcdui.Image;
 public class StateLevel8 implements State {
 
     private Canvas c;
-    private Image rumah, jendela, listrik;
     private boolean waktuHabis, kakak, makan, ortu, adik, mandi, win;
     private String tugas1, tugas2, tugas3;
     private int i, limit, tugasSelesai;
-    private Sound sound;
-    private Tools t;
-    private LoadInisialisasi ins;  
 
     public StateLevel8(Canvas c) {
         this.c = c;
-        this.sound = new Sound();
-        this.t = new Tools();
-        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {
-        try {
-            i = 0;
-            win = false;
-            kakak = false;
-            makan = false;
-            ortu = false;
-            adik = false;
-            mandi = false;
-            waktuHabis = false;
-            limit = 1000;
-            tugas1 = "kakak bangun";
-            tugas2 = "";
-            tugas3 = "";
-            tugasSelesai = 0;
-            rumah = Image.createImage("/GameIPA6/Image/bab8/rumah.png");
-            jendela = Image.createImage("/GameIPA6/Image/bab8/jendela.png");
-            listrik = Image.createImage("/GameIPA6/Image/bab8/listrik.png");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        i = 0;
+        win = false;
+        kakak = false;
+        makan = false;
+        ortu = false;
+        adik = false;
+        mandi = false;
+        waktuHabis = false;
+        limit = 1000;
+        tugas1 = "kakak bangun";
+        tugas2 = "";
+        tugas3 = "";
+        tugasSelesai = 0;
     }
 
     public void updateLogika() {
-        sound.play(sound.backsound1);
+        c.sound.play(c.sound.backsound1);
         if (!win) {
             if (kakak) {
                 limit--;
@@ -77,7 +58,7 @@ public class StateLevel8 implements State {
             }
         }
         if (limit < -1) {
-            t.life--;
+            c.t.life--;
             limit = 1000;
             tugasSelesai = 0;
             waktuHabis = true;
@@ -168,9 +149,9 @@ public class StateLevel8 implements State {
         }
 
         //nyawa habis
-        if (t.life == 0) {
+        if (c.t.life == 0) {
             c.pindahState(c.stateLevel);
-            t.life = 3;
+            c.t.life = 3;
         }
     }
 
@@ -187,23 +168,23 @@ public class StateLevel8 implements State {
             g.fillRect(0, 0, c.getWidth(), c.getHeight());
             g.setColor(0x6e380c);
             g.fillRect(0, 200, c.getWidth(), 80);
-            g.drawImage(rumah, c.getWidth() / 2, rumah.getHeight() / 2 + 50, Graphics.HCENTER | Graphics.VCENTER);
+            g.drawImage(c.ins.rumah, c.getWidth() / 2, c.ins.rumah.getHeight() / 2 + 50, Graphics.HCENTER | Graphics.VCENTER);
 
             //jendela
             if (kakak) {
-                g.drawImage(jendela, jendela.getWidth() / 2 + 30, jendela.getHeight() / 2 + 108, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 30, c.ins.jendela.getHeight() / 2 + 108, Graphics.HCENTER | Graphics.VCENTER);
             }
             if (makan) {
-                g.drawImage(jendela, jendela.getWidth() / 2 + 30, jendela.getHeight() / 2 + 180, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 30, c.ins.jendela.getHeight() / 2 + 180, Graphics.HCENTER | Graphics.VCENTER);
             }
             if (ortu) {
-                g.drawImage(jendela, jendela.getWidth() / 2 + 97, jendela.getHeight() / 2 + 128, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 97, c.ins.jendela.getHeight() / 2 + 128, Graphics.HCENTER | Graphics.VCENTER);
             }
             if (adik) {
-                g.drawImage(jendela, jendela.getWidth() / 2 + 162, jendela.getHeight() / 2 + 108, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 162, c.ins.jendela.getHeight() / 2 + 108, Graphics.HCENTER | Graphics.VCENTER);
             }
             if (mandi) {
-                g.drawImage(jendela, jendela.getWidth() / 2 + 162, jendela.getHeight() / 2 + 180, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 162, c.ins.jendela.getHeight() / 2 + 180, Graphics.HCENTER | Graphics.VCENTER);
             }
 
             //tugas1
@@ -215,20 +196,20 @@ public class StateLevel8 implements State {
             g.drawString(tugas3, c.getWidth() / 2, 330, Graphics.BASELINE | Graphics.HCENTER);
 
             //limit & time
-            g.drawImage(listrik, 10, 270, Graphics.HCENTER | Graphics.VCENTER);
-            g.drawString(limit + " A", 50, 275, Graphics.BASELINE | Graphics.HCENTER);
-            t.petunjuk(g, c, "Nyalakan lampu", "hanya jika dibutuhkan");
+            g.drawImage(c.ins.listrik, 10, 270, Graphics.HCENTER | Graphics.VCENTER);
+            g.drawString(limit + " watt", 50, 275, Graphics.BASELINE | Graphics.HCENTER);
+            c.t.petunjuk(g, c, "Nyalakan lampu", "hanya jika dibutuhkan");
 
             //icon
-            t.icon(g, c, "Level 8");
+            c.t.icon(g, c, "Level 8");
 
             if (win) {
-                t.win(g, c, true);
+                c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    sound.play(sound.berubah);
-                    if (t.level == 7) {
-                        t.level++;
+                    c.sound.play(c.sound.berubah);
+                    if (c.t.level == 7) {
+                        c.t.level++;
                     }
                     c.pindahState(c.stateLevel);
                 }
@@ -237,9 +218,7 @@ public class StateLevel8 implements State {
     }
 
     public void hapusResource() {
-        rumah = null;
-        jendela = null;
-        listrik = null;
+        c.ins.hapusBab8();
     }
 
     public void tapEvent(int x, int y) {
@@ -248,10 +227,10 @@ public class StateLevel8 implements State {
                 waktuHabis = false;
             }
         } else {
-            t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
             if (x > 33 && x < 78 && y > 112 && y < 152) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 if (kakak) {
                     kakak = false;
                 } else {
@@ -259,7 +238,7 @@ public class StateLevel8 implements State {
                 }
             }
             if (x > 33 && x < 78 && y > 185 && y < 222) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 if (makan) {
                     makan = false;
                 } else {
@@ -267,7 +246,7 @@ public class StateLevel8 implements State {
                 }
             }
             if (x > 100 && x < 145 && y > 134 && y < 172) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 if (ortu) {
                     ortu = false;
                 } else {
@@ -275,7 +254,7 @@ public class StateLevel8 implements State {
                 }
             }
             if (x > 166 && x < 210 && y > 112 && y < 152) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 if (adik) {
                     adik = false;
                 } else {
@@ -283,7 +262,7 @@ public class StateLevel8 implements State {
                 }
             }
             if (x > 166 && x < 210 && y > 185 && y < 222) {
-                sound.play(sound.menu);
+                c.sound.play(c.sound.menu);
                 if (mandi) {
                     mandi = false;
                 } else {

@@ -5,11 +5,16 @@
 package GameIPA6.Tools;
 
 import GameIPA6.Control.Canvas;
+import GameIPA6.Control.GameDesign;
 import GameIPA6.State.State;
 import java.io.IOException;
 import java.util.Random;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
+import javax.microedition.lcdui.game.Sprite;
+import javax.microedition.media.Manager;
+import javax.microedition.media.MediaException;
+import javax.microedition.media.Player;
 
 /**
  *
@@ -106,7 +111,7 @@ public class Tools {
         int index = random.nextInt(xAxis.length);
         return xAxis[index];
     }
-}
+
 //    public void tapRect(int x, int y, int xRumus, int yRumus, int width, int height, Canvas c, State statePindah) {
 //        if (y > yRumus && y < yRumus + height) {
 //            if (x > xRumus && x < xRumus + width) {
@@ -127,4 +132,5 @@ public class Tools {
 //        g.setColor(rs, gs, bs);
 //        g.drawString(string, xRumus + width / 2, yRumus + height / 2 + 5, Graphics.BASELINE | Graphics.HCENTER);
 //    }
-
+    
+}

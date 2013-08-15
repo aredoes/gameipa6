@@ -5,9 +5,6 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
-import GameIPA6.Tools.LoadInisialisasi;
-import GameIPA6.Tools.Sound;
-import GameIPA6.Tools.Tools;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
@@ -22,42 +19,29 @@ public class StateLoadingLevel9 implements State {
     private int page, story, count;
     private String kalimat[] = {"", "", "", "", ""};
     private boolean next;
-    private Image cek, ttsurya;
-    private Sound sound;
-    private Tools t;
-    private LoadInisialisasi ins;  
 
     public StateLoadingLevel9(Canvas c) {
         this.c = c;
-        this.sound = new Sound();
-        this.t = new Tools();
-        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {
-        try {
-            count = 0;
-            page = 1;
-            story = 1;
-            next = false;
-            cek = Image.createImage("/GameIPA6/Image/Icon/next.png");
-            ttsurya = Image.createImage("/GameIPA6/Image/bab9/tatasurya2.png");
-            kalimat[0] = "Jumlah planet dalam sistem";
-            kalimat[1] = "tata surya ada delapan, yaitu";
-            kalimat[2] = "Merkurius, Venus, Bumi,";
-            kalimat[3] = "Mars, Jupiter, Saturnus,";
-            kalimat[4] = "Uranus dan Neptunus";
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        count = 0;
+        page = 1;
+        story = 1;
+        next = false;
+        kalimat[0] = "Jumlah planet dalam sistem";
+        kalimat[1] = "tata surya ada delapan, yaitu";
+        kalimat[2] = "Merkurius, Venus, Bumi,";
+        kalimat[3] = "Mars, Jupiter, Saturnus,";
+        kalimat[4] = "Uranus dan Neptunus";
     }
 
     public void updateLogika() {
-        if (count > 5) {
+        if (count > 6) {
             page = 2;
         } else {
             try {
-                ins.bab9(count);
+                c.ins.bab9(count);
                 Thread.sleep(1000);
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -89,25 +73,25 @@ public class StateLoadingLevel9 implements State {
             case (2):
                 switch (story) {
                     case (1):
-                        g.drawImage(ins.story1, c.getWidth() / 2, 100 + ins.story1.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawString("Dedi melihat langit", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("dengan teropong", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("bintangnya", c.getWidth() / 2, c.getHeight() / 2 + ins.story1.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawImage(c.ins.story1, c.getWidth() / 2, 100 + c.ins.story1.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawString("Dedi melihat langit", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("dengan teropong", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("bintangnya", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story1.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
                         break;
                     case (2):
-                        g.drawImage(ins.story2, c.getWidth() / 2, 100 + ins.story2.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawString("Dilangit banyak planet.", c.getWidth() / 2, c.getHeight() / 2 + ins.story2.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("Planet apa saja", c.getWidth() / 2, c.getHeight() / 2 + ins.story2.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("itu yaa...?", c.getWidth() / 2, c.getHeight() / 2 + ins.story2.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawImage(c.ins.story2, c.getWidth() / 2, 100 + c.ins.story2.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawString("Dilangit banyak planet.", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story2.getHeight() / 2 + 20, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("Planet apa saja", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story2.getHeight() / 2 + 40, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("itu yaa...?", c.getWidth() / 2, c.getHeight() / 2 + c.ins.story2.getHeight() / 2 + 60, Graphics.HCENTER | Graphics.BASELINE);
                         break;
                     case (3):
-                        g.drawImage(ttsurya, c.getWidth() / 2, 150 + ttsurya.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-                        g.drawString("Klik pada planet untuk", c.getWidth() / 2, 200 + ttsurya.getHeight(), Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("memberi jawaban sesuai", c.getWidth() / 2, 200 + ttsurya.getHeight() + 20, Graphics.HCENTER | Graphics.BASELINE);
-                        g.drawString("pertanyaan yang diberikan", c.getWidth() / 2, 200 + ttsurya.getHeight() + 40, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawImage(c.ins.ttsurya, c.getWidth() / 2, 150 + c.ins.ttsurya.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                        g.drawString("Klik pada planet untuk", c.getWidth() / 2, 200 + c.ins.ttsurya.getHeight(), Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("memberi jawaban sesuai", c.getWidth() / 2, 200 + c.ins.ttsurya.getHeight() + 20, Graphics.HCENTER | Graphics.BASELINE);
+                        g.drawString("pertanyaan yang diberikan", c.getWidth() / 2, 200 + c.ins.ttsurya.getHeight() + 40, Graphics.HCENTER | Graphics.BASELINE);
                         break;
                 }
-                g.drawImage(cek, c.getWidth() - cek.getWidth() / 2, c.getHeight() - cek.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.cek, c.getWidth() - c.ins.cek.getWidth() / 2, c.getHeight() - c.ins.cek.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
                 if (next) {
                     c.pindahState(c.stateLevel9);
                 }
@@ -116,18 +100,21 @@ public class StateLoadingLevel9 implements State {
     }
 
     public void hapusResource() {
-        cek = null;
+        c.ins.cek = null;
+        c.ins.ttsurya = null;
+        c.ins.story1 = null;
+        c.ins.story2 = null;
     }
 
     public void tapEvent(int x, int y) {
         if (page == 2) {
-            if (x > c.getWidth() - cek.getWidth() && x < c.getWidth() && y > c.getHeight() - cek.getHeight() && y < c.getHeight()) {
+            if (x > c.getWidth() - c.ins.cek.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.cek.getHeight() && y < c.getHeight()) {
                 if (story < 3) {
                     story++;
-                    sound.play(sound.menu);
+                    c.sound.play(c.sound.menu);
                 } else {
                     next = true;
-                    sound.play(sound.berubah);
+                    c.sound.play(c.sound.berubah);
                 }
             }
         }

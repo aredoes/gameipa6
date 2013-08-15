@@ -6,9 +6,6 @@ package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
 import GameIPA6.Control.GameDesign;
-import GameIPA6.Tools.LoadInisialisasi;
-import GameIPA6.Tools.Sound;
-import GameIPA6.Tools.Tools;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
@@ -21,41 +18,24 @@ import javax.microedition.lcdui.game.Sprite;
 public class StateLevel7 implements State {
 
     private Canvas c;
-    private Image imgRun, imgBackground;
-    private GameDesign gd;
-    private Sprite pendorong;
     private int x, i, limit;
     private boolean waktuHabis, win;
-    private Sound sound;
-    private Tools t;
-    private LoadInisialisasi ins;  
 
     public StateLevel7(Canvas c) {
         this.c = c;
-        this.sound = new Sound();
-        this.t = new Tools();
-        this.ins = new LoadInisialisasi();
     }
 
     public void inisialisasi() {
-        try {
-            gd = new GameDesign();
-            pendorong = gd.getPendorong();
-            pendorong.setFrameSequence(gd.pendorongseq001);
-            imgRun = Image.createImage("/GameIPA6/Image/Icon/run.png");
-            imgBackground = Image.createImage("/GameIPA6/Image/bab7/background.png");
-            x = 0;
-            i = 0;
-            limit = 60;
-            waktuHabis = false;
-            win = false;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        c.ins.pendorong.setFrameSequence(c.ins.gd.pendorongseq001);
+        x = 0;
+        i = 0;
+        limit = 60;
+        waktuHabis = false;
+        win = false;
     }
 
     public void updateLogika() {
-        sound.play(sound.backsound1);
+        c.sound.play(c.sound.backsound1);
         //waktu habis
         if (limit < 1) {
             //game finish
@@ -63,7 +43,7 @@ public class StateLevel7 implements State {
                 win = true;
             } else {
                 waktuHabis = true;
-                t.life--;
+                c.t.life--;
                 x = 0;
                 limit = 60;
             }
@@ -75,9 +55,9 @@ public class StateLevel7 implements State {
         }
 
         //nyawa habis
-        if (t.life == 0) {
+        if (c.t.life == 0) {
             c.pindahState(c.stateLevel);
-            t.life = 3;
+            c.t.life = 3;
         }
     }
 
@@ -91,26 +71,26 @@ public class StateLevel7 implements State {
             g.setColor(0, 0, 0);
             g.drawString("Klik disini...", c.getWidth() / 2, c.getHeight() / 2 + 15, Graphics.BASELINE | Graphics.HCENTER);
         } else {
-            g.drawImage(imgBackground, c.getWidth() / 2, imgBackground.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-            t.icon(g, c, "Level 7");
+            g.drawImage(c.ins.imgBackground, c.getWidth() / 2, c.ins.imgBackground.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+            c.t.icon(g, c, "Level 7");
             g.setColor(0, 0, 0);
             g.drawString(limit + " detik", c.getWidth() / 2, 80, Graphics.BASELINE | Graphics.HCENTER);
             g.drawString("Taruh disini", 176, 165, Graphics.BASELINE | Graphics.HCENTER);
 
             //orang
-            pendorong.setPosition(x, 200);
-            pendorong.paint(g);
+            c.ins.pendorong.setPosition(x, 200);
+            c.ins.pendorong.paint(g);
 
             //run
-            g.drawImage(imgRun, c.getWidth() - imgRun.getWidth() / 2, c.getHeight() - imgRun.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+            g.drawImage(c.ins.imgRun, c.getWidth() - c.ins.imgRun.getWidth() / 2, c.getHeight() - c.ins.imgRun.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
 
             if (win) {
-                t.win(g, c, true);
+                c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    sound.play(sound.berubah);
-                    if (t.level == 6) {
-                        t.level++;
+                    c.sound.play(c.sound.berubah);
+                    if (c.t.level == 6) {
+                        c.t.level++;
                     }
                     c.pindahState(c.stateLevel);
                 }
@@ -120,9 +100,7 @@ public class StateLevel7 implements State {
     }
 
     public void hapusResource() {
-        imgRun = null;
-        imgBackground = null;
-        pendorong = null;
+        c.ins.hapusBab7();
     }
 
     public void tapEvent(int x, int y) {
@@ -131,13 +109,13 @@ public class StateLevel7 implements State {
                 waktuHabis = false;
             }
         } else {
-            t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
             //arah
-            if (y > c.getHeight() - imgRun.getHeight() && y < c.getHeight()) {
-                if (x > c.getWidth() - imgRun.getWidth() && x < c.getWidth()) {
-                    sound.play(sound.menu);
-                    pendorong.nextFrame();
+            if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight()) {
+                if (x > c.getWidth() - c.ins.imgRun.getWidth() && x < c.getWidth()) {
+                    c.sound.play(c.sound.menu);
+                    c.ins.pendorong.nextFrame();
                     this.x += 3;
                 }
             }
