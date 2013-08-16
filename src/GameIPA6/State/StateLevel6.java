@@ -19,6 +19,9 @@ public class StateLevel6 implements State {
     private Image gmb;
     private int i, j, k, time, tugas;
     private boolean waktuHabis, gagal, win;
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel6(Canvas c) {
         this.c = c;
@@ -34,6 +37,8 @@ public class StateLevel6 implements State {
             gagal = false;
             waktuHabis = false;
             gmb = Image.createImage("/GameIPA6/Image/bab6/panci.png");
+            over = false;
+            ov = 0;
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -49,9 +54,9 @@ public class StateLevel6 implements State {
             tugas = 0;
         }
         if (c.t.life == 0) {
-            gagal = true;
-            k++;
-            if (k > 8) {
+            over = true;
+            ov++;
+            if (ov > 15) {
                 c.pindahState(c.stateLevel);
                 c.t.life = 3;
             }
@@ -127,6 +132,14 @@ public class StateLevel6 implements State {
                     i = 0;
                 }
             }
+
+            //nyawa habis
+            if (over) {
+                g.setColor(255, 0, 0);
+                g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+                g.setColor(255, 255, 255);
+                g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+            }
         }
     }
 
@@ -136,67 +149,69 @@ public class StateLevel6 implements State {
     }
 
     public void tapEvent(int x, int y) {
-        if (waktuHabis) {
-            if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
-                waktuHabis = false;
-                c.t.life--;
-                time = 60;
-            }
-        } else {
-            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
-            if (x > 21 && y > 272 && x < 51 && y < 324) {
-                if (tugas == 1) {
-                    c.sound.play(c.sound.menu);
-                    tugas++;
-                } else {
-                    c.sound.play(c.sound.salah);
-                    gagal = true;
+        if (!over) {
+            if (waktuHabis) {
+                if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
+                    waktuHabis = false;
                     c.t.life--;
-                    j = 0;
+                    time = 60;
                 }
-            }
-            if (x > 62 && y > 272 && x < 96 && y < 324) {
-                if (tugas == 0) {
-                    c.sound.play(c.sound.menu);
-                    tugas++;
-                } else {
-                    c.sound.play(c.sound.salah);
-                    gagal = true;
-                    c.t.life--;
-                    j = 0;
+            } else if (!win) {
+                c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+                if (x > 21 && y > 272 && x < 51 && y < 324) {
+                    if (tugas == 1) {
+                        c.sound.play(c.sound.menu);
+                        tugas++;
+                    } else {
+                        c.sound.play(c.sound.salah);
+                        gagal = true;
+                        c.t.life--;
+                        j = 0;
+                    }
                 }
-            }
-            if (x > 106 && y > 272 && x < 133 && y < 324) {
-                if (tugas == 3) {
-                    c.sound.play(c.sound.menu);
-                    tugas++;
-                } else {
-                    c.sound.play(c.sound.salah);
-                    gagal = true;
-                    c.t.life--;
-                    j = 0;
+                if (x > 62 && y > 272 && x < 96 && y < 324) {
+                    if (tugas == 0) {
+                        c.sound.play(c.sound.menu);
+                        tugas++;
+                    } else {
+                        c.sound.play(c.sound.salah);
+                        gagal = true;
+                        c.t.life--;
+                        j = 0;
+                    }
                 }
-            }
-            if (x > 141 && y > 272 && x < 177 && y < 324) {
-                if (tugas == 4) {
-                    c.sound.play(c.sound.menu);
-                    tugas++;
-                } else {
-                    c.sound.play(c.sound.salah);
-                    gagal = true;
-                    c.t.life--;
-                    j = 0;
+                if (x > 106 && y > 272 && x < 133 && y < 324) {
+                    if (tugas == 3) {
+                        c.sound.play(c.sound.menu);
+                        tugas++;
+                    } else {
+                        c.sound.play(c.sound.salah);
+                        gagal = true;
+                        c.t.life--;
+                        j = 0;
+                    }
                 }
-            }
-            if (x > 184 && y > 274 && x < 220 && y < 326) {
-                if (tugas == 2) {
-                    c.sound.play(c.sound.menu);
-                    tugas++;
-                } else {
-                    c.sound.play(c.sound.salah);
-                    gagal = true;
-                    c.t.life--;
-                    j = 0;
+                if (x > 141 && y > 272 && x < 177 && y < 324) {
+                    if (tugas == 4) {
+                        c.sound.play(c.sound.menu);
+                        tugas++;
+                    } else {
+                        c.sound.play(c.sound.salah);
+                        gagal = true;
+                        c.t.life--;
+                        j = 0;
+                    }
+                }
+                if (x > 184 && y > 274 && x < 220 && y < 326) {
+                    if (tugas == 2) {
+                        c.sound.play(c.sound.menu);
+                        tugas++;
+                    } else {
+                        c.sound.play(c.sound.salah);
+                        gagal = true;
+                        c.t.life--;
+                        j = 0;
+                    }
                 }
             }
         }

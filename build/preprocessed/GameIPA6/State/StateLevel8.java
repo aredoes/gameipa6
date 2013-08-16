@@ -17,6 +17,9 @@ public class StateLevel8 implements State {
     private boolean waktuHabis, kakak, makan, ortu, adik, mandi, win;
     private String tugas1, tugas2, tugas3;
     private int i, limit, tugasSelesai;
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel8(Canvas c) {
         this.c = c;
@@ -36,6 +39,8 @@ public class StateLevel8 implements State {
         tugas2 = "";
         tugas3 = "";
         tugasSelesai = 0;
+        over = false;
+        ov = 0;
     }
 
     public void updateLogika() {
@@ -150,8 +155,12 @@ public class StateLevel8 implements State {
 
         //nyawa habis
         if (c.t.life == 0) {
-            c.pindahState(c.stateLevel);
-            c.t.life = 3;
+            over = true;
+            ov++;
+            if (ov > 15) {
+                c.pindahState(c.stateLevel);
+                c.t.life = 3;
+            }
         }
     }
 
@@ -214,6 +223,14 @@ public class StateLevel8 implements State {
                     c.pindahState(c.stateLevel);
                 }
             }
+
+            //nyawa habis
+            if (over) {
+                g.setColor(0xffb638);
+                g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+                g.setColor(255, 0, 0);
+                g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+            }
         }
     }
 
@@ -222,51 +239,53 @@ public class StateLevel8 implements State {
     }
 
     public void tapEvent(int x, int y) {
-        if (waktuHabis) {
-            if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
-                waktuHabis = false;
-            }
-        } else {
-            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+        if (!over) {
+            if (waktuHabis) {
+                if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
+                    waktuHabis = false;
+                }
+            } else if (!win) {
+                c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
-            if (x > 33 && x < 78 && y > 112 && y < 152) {
-                c.sound.play(c.sound.menu);
-                if (kakak) {
-                    kakak = false;
-                } else {
-                    kakak = true;
+                if (x > 33 && x < 78 && y > 112 && y < 152) {
+                    c.sound.play(c.sound.menu);
+                    if (kakak) {
+                        kakak = false;
+                    } else {
+                        kakak = true;
+                    }
                 }
-            }
-            if (x > 33 && x < 78 && y > 185 && y < 222) {
-                c.sound.play(c.sound.menu);
-                if (makan) {
-                    makan = false;
-                } else {
-                    makan = true;
+                if (x > 33 && x < 78 && y > 185 && y < 222) {
+                    c.sound.play(c.sound.menu);
+                    if (makan) {
+                        makan = false;
+                    } else {
+                        makan = true;
+                    }
                 }
-            }
-            if (x > 100 && x < 145 && y > 134 && y < 172) {
-                c.sound.play(c.sound.menu);
-                if (ortu) {
-                    ortu = false;
-                } else {
-                    ortu = true;
+                if (x > 100 && x < 145 && y > 134 && y < 172) {
+                    c.sound.play(c.sound.menu);
+                    if (ortu) {
+                        ortu = false;
+                    } else {
+                        ortu = true;
+                    }
                 }
-            }
-            if (x > 166 && x < 210 && y > 112 && y < 152) {
-                c.sound.play(c.sound.menu);
-                if (adik) {
-                    adik = false;
-                } else {
-                    adik = true;
+                if (x > 166 && x < 210 && y > 112 && y < 152) {
+                    c.sound.play(c.sound.menu);
+                    if (adik) {
+                        adik = false;
+                    } else {
+                        adik = true;
+                    }
                 }
-            }
-            if (x > 166 && x < 210 && y > 185 && y < 222) {
-                c.sound.play(c.sound.menu);
-                if (mandi) {
-                    mandi = false;
-                } else {
-                    mandi = true;
+                if (x > 166 && x < 210 && y > 185 && y < 222) {
+                    c.sound.play(c.sound.menu);
+                    if (mandi) {
+                        mandi = false;
+                    } else {
+                        mandi = true;
+                    }
                 }
             }
         }

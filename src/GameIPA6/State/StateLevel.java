@@ -102,39 +102,39 @@ public class StateLevel implements State {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel1);
             }
-            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 0) {
+            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 ) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel2);
             }
-            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 1) {
+            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 ) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel3);
             }
         }
         if (y > c.getHeight() / 2 - 30 - 60 / 2 && y < c.getHeight() / 2 - 30 + 60 / 2) {
-            if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 && c.t.level > 2) {
+            if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 ) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel4);
             }
-            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 3) {
+            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 ) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel5);
             }
-            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 4) {
+            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 ) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel6);
             }
         }
         if (y > c.getHeight() / 2 + 50 - 60 / 2 && y < c.getHeight() / 2 + 50 + 60 / 2) {
-            if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 && c.t.level > 5) {
+            if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 ) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel7);
             }
-            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 6) {
+            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 ) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel8);
             }
-            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 7) {
+            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 ) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel9);
             }

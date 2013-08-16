@@ -18,6 +18,9 @@ public class StateLevel5 implements State {
     private Canvas c;
     private int i, x, y, x2, y2, x3, y3, x4, y4, tugas;
     private boolean plastik, win;
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel5(Canvas c) {
         this.c = c;
@@ -36,13 +39,19 @@ public class StateLevel5 implements State {
         y3 = 230;
         y4 = 200;
         plastik = true;
+        over = false;
+        ov = 0;
     }
 
     public void updateLogika() {
         c.sound.play(c.sound.backsound1);
         if (c.t.life == 0) {
-            c.pindahState(c.stateLevel);
-            c.t.life = 3;
+            over = true;
+            ov++;
+            if (ov > 15) {
+                c.pindahState(c.stateLevel);
+                c.t.life = 3;
+            }
         }
         if (tugas == 5) {
             win = true;
@@ -168,6 +177,14 @@ public class StateLevel5 implements State {
             }
         }
 
+        //nyawa habis
+        if (over) {
+            g.setColor(0xffb638);
+            g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+            g.setColor(255, 0, 0);
+            g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+        }
+
     }
 
     public void hapusResource() {
@@ -175,20 +192,22 @@ public class StateLevel5 implements State {
     }
 
     public void tapEvent(int x, int y) {
-        c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
-        try {
-            if (x > 0 && y > c.getHeight() - 110 && x < c.getWidth() / 2 && y < c.getHeight() - 60) {
-                c.sound.play(c.sound.menu);
-                c.ins.pipa = Image.createImage("/GameIPA6/Image/bab5/pipa logam.png");
-                plastik = false;
+        if (!over) {
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            try {
+                if (x > 0 && y > c.getHeight() - 110 && x < c.getWidth() / 2 && y < c.getHeight() - 60) {
+                    c.sound.play(c.sound.menu);
+                    c.ins.pipa = Image.createImage("/GameIPA6/Image/bab5/pipa logam.png");
+                    plastik = false;
+                }
+                if (x > c.getWidth() / 2 && y > c.getHeight() - 110 && x < c.getWidth() && y < c.getHeight() - 60) {
+                    c.sound.play(c.sound.menu);
+                    c.ins.pipa = Image.createImage("/GameIPA6/Image/bab5/pipa plastik.png");
+                    plastik = true;
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-            if (x > c.getWidth() / 2 && y > c.getHeight() - 110 && x < c.getWidth() && y < c.getHeight() - 60) {
-                c.sound.play(c.sound.menu);
-                c.ins.pipa = Image.createImage("/GameIPA6/Image/bab5/pipa plastik.png");
-                plastik = true;
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
     }
 }

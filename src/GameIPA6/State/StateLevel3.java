@@ -16,6 +16,9 @@ public class StateLevel3 implements State {
     private Canvas c;
     private int x, i, limit, xBackground, xBackground2;
     private boolean waktuHabis, finish;
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel3(Canvas c) {
         this.c = c;
@@ -33,6 +36,8 @@ public class StateLevel3 implements State {
         xBackground = 0;
         xBackground2 = c.ins.imgBackground.getWidth();
         waktuHabis = false;
+        over = false;
+        ov = 0;
     }
 
     public void updateLogika() {
@@ -66,8 +71,12 @@ public class StateLevel3 implements State {
 
         //nyawa habis
         if (c.t.life == 0) {
-            c.pindahState(c.stateLevel);
-            c.t.life = 3;
+            over = true;
+            ov++;
+            if (ov > 15) {
+                c.pindahState(c.stateLevel);
+                c.t.life = 3;
+            }
         }
     }
 
@@ -113,6 +122,14 @@ public class StateLevel3 implements State {
                     c.pindahState(c.stateLevel);
                 }
             }
+
+            //nyawa habis
+            if (over) {
+                g.setColor(255, 0, 0);
+                g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+                g.setColor(255, 255, 255);
+                g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+            }
         }
     }
 
@@ -121,21 +138,23 @@ public class StateLevel3 implements State {
     }
 
     public void tapEvent(int x, int y) {
-        c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
-        if (waktuHabis) {
-            if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
-                waktuHabis = false;
-                c.t.life--;
-                this.x = 0;
-                limit = 120;
-            }
-        } else {
-            //arah
-            if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight() && !finish) {
-                if (x > c.getWidth() - c.ins.imgRun.getWidth() && x < c.getWidth()) {
-                    c.sound.play(c.sound.menu);
-                    this.x += 4;
-                    c.ins.orang.nextFrame();
+        if (!over) {
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            if (waktuHabis) {
+                if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
+                    waktuHabis = false;
+                    c.t.life--;
+                    this.x = 0;
+                    limit = 120;
+                }
+            } else {
+                //arah
+                if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight() && !finish) {
+                    if (x > c.getWidth() - c.ins.imgRun.getWidth() && x < c.getWidth()) {
+                        c.sound.play(c.sound.menu);
+                        this.x += 4;
+                        c.ins.orang.nextFrame();
+                    }
                 }
             }
         }

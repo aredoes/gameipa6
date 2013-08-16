@@ -16,6 +16,10 @@ public class StateLevel1aa implements State {
     private Canvas c;
     private boolean salah, benar;
     private int x, i;
+    
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel1aa(Canvas c) {
         this.c = c;
@@ -24,13 +28,19 @@ public class StateLevel1aa implements State {
     public void inisialisasi() {
         salah = false;
         benar = false;
+        over = false;
+        ov = 0;
     }
 
     public void updateLogika() {
         c.sound.play(c.sound.backsound1);
         if (c.t.life == 0) {
-            c.pindahState(c.stateLevel);
-            c.t.life = 3;
+            over = true;
+            ov++;
+            if (ov > 15) {
+                c.pindahState(c.stateLevel);
+                c.t.life = 3;
+            }
         }
     }
 
@@ -66,6 +76,14 @@ public class StateLevel1aa implements State {
             }
         }
 
+        //nyawa habis
+        if (over) {
+            g.setColor(255, 0, 0);
+            g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+            g.setColor(255, 255, 255);
+            g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+        }
+
         c.t.icon(g, c, "Level 1");
     }
 
@@ -74,19 +92,21 @@ public class StateLevel1aa implements State {
     }
 
     public void tapEvent(int x, int y) {
-        if (x > 51 && y > 287 && x < 89 && y < 323 || x > 151 && y > 287 && x < 188 && y < 323 && !benar) {
-            c.t.life--;
-            this.x = 0;
-            salah = true;
-            c.sound.play(c.sound.salah);
-        }
-        if (x > 100 && y > 287 && x < 138 && y < 323 && !benar) {
-            benar = true;
-            c.sound.play(c.sound.berubah);
-        }
-        if (x > 0 && x < 40 && y > 0 && y < 40) {
-            c.pindahState(c.statePause);
-            c.sound.play(c.sound.beep);
+        if (!over && !benar) {
+            if (x > 51 && y > 287 && x < 89 && y < 323 || x > 151 && y > 287 && x < 188 && y < 323) {
+                c.t.life--;
+                this.x = 0;
+                salah = true;
+                c.sound.play(c.sound.salah);
+            }
+            if (x > 100 && y > 287 && x < 138 && y < 323) {
+                benar = true;
+                c.sound.play(c.sound.berubah);
+            }
+            if (x > 0 && x < 40 && y > 0 && y < 40) {
+                c.pindahState(c.statePause);
+                c.sound.play(c.sound.beep);
+            }
         }
     }
 }

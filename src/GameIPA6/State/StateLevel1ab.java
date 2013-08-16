@@ -15,6 +15,9 @@ public class StateLevel1ab implements State {
 
     private Canvas c;
     private int x, xh1, xh2, yh, i, j, finish;
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel1ab(Canvas c) {
         this.c = c;
@@ -28,6 +31,8 @@ public class StateLevel1ab implements State {
         xh2 = 0;
         finish = 0;
         yh = c.getHeight() + c.ins.balokHalang1.getHeight();
+        over = false;
+        ov = 0;
     }
 
     public void updateLogika() {
@@ -60,8 +65,12 @@ public class StateLevel1ab implements State {
         }
 
         if (c.t.life == 0) {
-            c.pindahState(c.stateLevel);
-            c.t.life = 3;
+            over = true;
+            ov++;
+            if (ov > 15) {
+                c.pindahState(c.stateLevel);
+                c.t.life = 3;
+            }
         }
 
     }
@@ -93,6 +102,14 @@ public class StateLevel1ab implements State {
             }
         }
 
+        //nyawa habis
+        if (over) {
+            g.setColor(255, 0, 0);
+            g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+            g.setColor(255, 255, 255);
+            g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+        }
+
         c.t.icon(g, c, "Level 1");
     }
 
@@ -101,15 +118,17 @@ public class StateLevel1ab implements State {
     }
 
     public void tapEvent(int x, int y) {
-        c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+        if (!over) {
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
-        if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() && y < c.getHeight() && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang1, true) && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang2, true) && finish <= 5) {
-            if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.x > -75) {
-                this.x -= 25;
-                c.sound.play(c.sound.menu);
-            } else if (x > c.getWidth() - c.ins.imgRightArrow.getWidth() && x < c.getWidth() && this.x < 75) {
-                this.x += 25;
-                c.sound.play(c.sound.menu);
+            if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() && y < c.getHeight() && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang1, true) && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang2, true) && finish <= 5) {
+                if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.x > -75) {
+                    this.x -= 25;
+                    c.sound.play(c.sound.menu);
+                } else if (x > c.getWidth() - c.ins.imgRightArrow.getWidth() && x < c.getWidth() && this.x < 75) {
+                    this.x += 25;
+                    c.sound.play(c.sound.menu);
+                }
             }
         }
     }

@@ -20,6 +20,10 @@ public class StateLevel7 implements State {
     private Canvas c;
     private int x, i, limit;
     private boolean waktuHabis, win;
+    private String ket;
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel7(Canvas c) {
         this.c = c;
@@ -32,14 +36,18 @@ public class StateLevel7 implements State {
         limit = 60;
         waktuHabis = false;
         win = false;
+        over = false;
+        ov = 0;
     }
 
     public void updateLogika() {
         c.sound.play(c.sound.backsound1);
+        ket = "Taruh disini";
         //waktu habis
         if (limit < 1) {
             //game finish
             if (x >= 101 && x <= 103) {
+                ket = "Hore, berhasil!";
                 win = true;
             } else {
                 waktuHabis = true;
@@ -47,6 +55,10 @@ public class StateLevel7 implements State {
                 x = 0;
                 limit = 60;
             }
+        } else if (x >= 101 && x <= 103) {
+            ket = "Stop, sudah pas!!";
+        } else if (x > 103) {
+            ket = "Yah, lewat...";
         }
 
         //game start
@@ -56,8 +68,12 @@ public class StateLevel7 implements State {
 
         //nyawa habis
         if (c.t.life == 0) {
-            c.pindahState(c.stateLevel);
-            c.t.life = 3;
+            over = true;
+            ov++;
+            if (ov > 15) {
+                c.pindahState(c.stateLevel);
+                c.t.life = 3;
+            }
         }
     }
 
@@ -75,7 +91,7 @@ public class StateLevel7 implements State {
             c.t.icon(g, c, "Level 7");
             g.setColor(0, 0, 0);
             g.drawString(limit + " detik", c.getWidth() / 2, 80, Graphics.BASELINE | Graphics.HCENTER);
-            g.drawString("Taruh disini", 176, 165, Graphics.BASELINE | Graphics.HCENTER);
+            g.drawString(ket, 176, 165, Graphics.BASELINE | Graphics.HCENTER);
 
             //orang
             c.ins.pendorong.setPosition(x, 200);
@@ -96,6 +112,14 @@ public class StateLevel7 implements State {
                 }
             }
 
+            //nyawa habis
+            if (over) {
+                g.setColor(0xffb638);
+                g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+                g.setColor(255, 0, 0);
+                g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+            }
+
         }
     }
 
@@ -104,19 +128,21 @@ public class StateLevel7 implements State {
     }
 
     public void tapEvent(int x, int y) {
-        if (waktuHabis) {
-            if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
-                waktuHabis = false;
-            }
-        } else {
-            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+        if (!over) {
+            if (waktuHabis) {
+                if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
+                    waktuHabis = false;
+                }
+            } else if (!win) {
+                c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
-            //arah
-            if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight()) {
-                if (x > c.getWidth() - c.ins.imgRun.getWidth() && x < c.getWidth()) {
-                    c.sound.play(c.sound.menu);
-                    c.ins.pendorong.nextFrame();
-                    this.x += 3;
+                //arah
+                if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight() && !win) {
+                    if (x > c.getWidth() - c.ins.imgRun.getWidth() && x < c.getWidth()) {
+                        c.sound.play(c.sound.menu);
+                        c.ins.pendorong.nextFrame();
+                        this.x += 3;
+                    }
                 }
             }
         }

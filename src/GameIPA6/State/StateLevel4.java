@@ -16,6 +16,9 @@ public class StateLevel4 implements State {
     private Canvas c;
     private int xPenyelamat, xPencuri, yPencuri, coll, p, temp, level, i;
     private boolean tembak, xP, win;
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel4(Canvas c) {
         this.c = c;
@@ -35,6 +38,8 @@ public class StateLevel4 implements State {
         xPencuri = 0;
         xP = false;
         tembak = false;
+        over = false;
+        ov = 0;
     }
 
     public void updateLogika() {
@@ -82,6 +87,15 @@ public class StateLevel4 implements State {
             p = 0;
         }
 
+        if (c.t.life == 0) {
+            over = true;
+            ov++;
+            if (ov > 15) {
+                c.pindahState(c.stateLevel);
+                c.t.life = 3;
+            }
+        }
+
     }
 
     public void updateGambar(Graphics g) {
@@ -115,6 +129,14 @@ public class StateLevel4 implements State {
                 c.pindahState(c.stateLevel);
             }
         }
+
+        //nyawa habis
+        if (over) {
+            g.setColor(255, 0, 0);
+            g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+            g.setColor(255, 255, 255);
+            g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+        }
     }
 
     public void hapusResource() {
@@ -122,21 +144,23 @@ public class StateLevel4 implements State {
     }
 
     public void tapEvent(int x, int y) {
-        c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+        if (!over) {
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
-        if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() - 60 && y < c.getHeight() - 60) {
-            if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.xPenyelamat > -60) {
-                c.sound.play(c.sound.menu);
-                this.xPenyelamat -= 15;
-            } else if (x > c.getWidth() - c.ins.imgRightArrow.getWidth() && x < c.getWidth() && this.xPenyelamat < 60) {
-                c.sound.play(c.sound.menu);
-                this.xPenyelamat += 15;
+            if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() - 60 && y < c.getHeight() - 60) {
+                if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.xPenyelamat > -60) {
+                    c.sound.play(c.sound.menu);
+                    this.xPenyelamat -= 15;
+                } else if (x > c.getWidth() - c.ins.imgRightArrow.getWidth() && x < c.getWidth() && this.xPenyelamat < 60) {
+                    c.sound.play(c.sound.menu);
+                    this.xPenyelamat += 15;
+                }
             }
-        }
 
-        if (x > c.getWidth() / 2 - c.ins.imgFire.getWidth() / 2 && y > c.getHeight() - c.ins.imgFire.getHeight() - 60 && x < c.getWidth() / 2 + c.ins.imgFire.getWidth() / 2 && y < c.getHeight() - 60 && !tembak) {
-            tembak = true;
-            temp = c.ins.penyelamat.getX() + c.ins.penyelamat.getWidth() / 2 - c.ins.peluru.getWidth() / 2;
+            if (x > c.getWidth() / 2 - c.ins.imgFire.getWidth() / 2 && y > c.getHeight() - c.ins.imgFire.getHeight() - 60 && x < c.getWidth() / 2 + c.ins.imgFire.getWidth() / 2 && y < c.getHeight() - 60 && !tembak) {
+                tembak = true;
+                temp = c.ins.penyelamat.getX() + c.ins.penyelamat.getWidth() / 2 - c.ins.peluru.getWidth() / 2;
+            }
         }
     }
 }

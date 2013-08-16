@@ -70,43 +70,49 @@ public class Sound {
             try {
                 switch (player) {
                     case (0):
+                        slh.stop();
                         slh.deallocate();
                         slh.prefetch();
                         slh.realize();
                         slh.start();
                         break;
                     case (1):
+                        mn.stop();
                         mn.deallocate();
                         mn.prefetch();
                         mn.realize();
                         mn.start();
                         break;
                     case (2):
+                        pdg.stop();
                         pdg.deallocate();
                         pdg.prefetch();
                         pdg.realize();
                         pdg.start();
                         break;
                     case (3):
+                        ub.stop();
                         ub.deallocate();
                         ub.prefetch();
                         ub.realize();
                         ub.start();
                         break;
                     case (4):
+                        clg.stop();
                         clg.deallocate();
                         clg.prefetch();
                         clg.realize();
                         clg.start();
                         break;
                     case (5):
-                        System.out.println("beeb jalan");
+                        bp.stop();
                         bp.deallocate();
                         bp.prefetch();
                         bp.realize();
                         bp.start();
                         break;
                     case (6):
+                        arg.stop();
                         arg.deallocate();
                         arg.prefetch();
                         arg.realize();

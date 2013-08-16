@@ -16,6 +16,10 @@ public class StateLevel2 implements State {
     private Canvas c;
     private boolean win, gagal, jgt, kms, pydr, pgl, spr, ovrm;
     private int i, j;
+    
+    //nyawa habis
+    private boolean over;
+    private int ov;
 
     public StateLevel2(Canvas c) {
         this.c = c;
@@ -32,15 +36,20 @@ public class StateLevel2 implements State {
         pgl = false;
         spr = false;
         ovrm = false;
+        over = false;
+        ov = 0;
     }
 
     public void updateLogika() {
         c.sound.play(c.sound.backsound1);
         if (c.t.life == 0) {
-            c.pindahState(c.stateLevel);
-            c.t.life = 3;
+            over = true;
+            ov++;
+            if (ov > 15) {
+                c.pindahState(c.stateLevel);
+                c.t.life = 3;
+            }
         }
-
     }
 
     public void updateGambar(Graphics g) {
@@ -100,6 +109,14 @@ public class StateLevel2 implements State {
                 c.pindahState(c.stateLevel);
             }
         }
+        
+        //nyawa habis
+        if (over) {
+            g.setColor(0xffb638);
+            g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+            g.setColor(255, 0, 0);
+            g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
+        }
     }
 
     public void hapusResource() {
@@ -107,57 +124,59 @@ public class StateLevel2 implements State {
     }
 
     public void tapEvent(int x, int y) {
-        if (x > 131 && x < 200 && y > 22 && y < 110) {
-            if (pgl) {
-                pgl = false;
-            } else {
-                pgl = true;
+        if (! over && !win) {
+            if (x > 131 && x < 200 && y > 22 && y < 110) {
+                if (pgl) {
+                    pgl = false;
+                } else {
+                    pgl = true;
+                }
+                c.sound.play(c.sound.beep);
             }
-            c.sound.play(c.sound.beep);
-        }
-        if (x > 89 && x < 153 && y > 122 && y < 160) {
-            if (pydr) {
-                pydr = false;
-            } else {
-                pydr = true;
+            if (x > 89 && x < 153 && y > 122 && y < 160) {
+                if (pydr) {
+                    pydr = false;
+                } else {
+                    pydr = true;
+                }
+                c.sound.play(c.sound.beep);
             }
-            c.sound.play(c.sound.beep);
-        }
-        if (x > 179 && x < 229 && y > 123 && y < 166) {
-            if (kms) {
-                kms = false;
-            } else {
-                kms = true;
+            if (x > 179 && x < 229 && y > 123 && y < 166) {
+                if (kms) {
+                    kms = false;
+                } else {
+                    kms = true;
+                }
+                c.sound.play(c.sound.beep);
             }
-            c.sound.play(c.sound.beep);
-        }
-        if (x > 95 && x < 146 && y > 184 && y < 228) {
-            if (jgt) {
-                jgt = false;
-            } else {
-                jgt = true;
+            if (x > 95 && x < 146 && y > 184 && y < 228) {
+                if (jgt) {
+                    jgt = false;
+                } else {
+                    jgt = true;
+                }
+                c.sound.play(c.sound.beep);
             }
-            c.sound.play(c.sound.beep);
-        }
-        if (x > 171 && x < 224 && y > 180 && y < 228) {
-            spr = true;
-            ovrm = false;
-            c.sound.play(c.sound.beep);
-        }
-        if (x > 99 && x < 221 && y > 237 && y < 323) {
-            ovrm = true;
-            spr = false;
-            c.sound.play(c.sound.beep);
-        }
+            if (x > 171 && x < 224 && y > 180 && y < 228) {
+                spr = true;
+                ovrm = false;
+                c.sound.play(c.sound.beep);
+            }
+            if (x > 99 && x < 221 && y > 237 && y < 323) {
+                ovrm = true;
+                spr = false;
+                c.sound.play(c.sound.beep);
+            }
 
-        c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
-        if (x > c.getWidth() - c.ins.imgCheck.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.imgCheck.getHeight() && y < c.getHeight()) {
-            if (kms && jgt && spr && !pydr && !pgl && !ovrm || !kms && !jgt && !spr && pydr && pgl && ovrm) {
-                win = true;
-            } else {
-                gagal = true;
-                c.sound.play(c.sound.salah);
+            if (x > c.getWidth() - c.ins.imgCheck.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.imgCheck.getHeight() && y < c.getHeight()) {
+                if (kms && jgt && spr && !pydr && !pgl && !ovrm || !kms && !jgt && !spr && pydr && pgl && ovrm) {
+                    win = true;
+                } else {
+                    gagal = true;
+                    c.sound.play(c.sound.salah);
+                }
             }
         }
     }
