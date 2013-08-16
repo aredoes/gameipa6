@@ -110,7 +110,6 @@ public class StateLoadingLevel2 implements State {
             if (x > c.getWidth() - c.ins.cek.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.cek.getHeight() && y < c.getHeight()) {
                 if (story < 3) {
                     story++;
-                    c.sound.play(c.sound.menu);
                 } else {
                     next = true;
                     c.sound.play(c.sound.berubah);

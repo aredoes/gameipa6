@@ -65,7 +65,6 @@ public class Canvas extends GameCanvas implements Runnable {
     public void run() {
         Graphics g = getGraphics();
         while (isGameJalan) {
-            System.out.println(sound.backsound1);
             flushGraphics();
             try {
                 stateSekarang.updateLogika();

@@ -100,6 +100,7 @@ public class Sound {
                         clg.start();
                         break;
                     case (5):
+                        System.out.println("beeb jalan");
                         bp.deallocate();
                         bp.prefetch();
                         bp.realize();
