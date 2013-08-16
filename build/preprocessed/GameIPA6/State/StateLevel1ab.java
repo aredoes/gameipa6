@@ -104,9 +104,9 @@ public class StateLevel1ab implements State {
 
         //nyawa habis
         if (over) {
-            g.setColor(0xffb638);
-            g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
             g.setColor(255, 0, 0);
+            g.fillRect(0, c.getHeight() / 2 - 25, c.getWidth(), 50);
+            g.setColor(255, 255, 255);
             g.drawString("NYAWA HABIS!", c.getWidth() / 2, c.getHeight() / 2, Graphics.BASELINE | Graphics.HCENTER);
         }
 

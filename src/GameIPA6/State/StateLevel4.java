@@ -54,6 +54,7 @@ public class StateLevel4 implements State {
         }
 
         if (yPencuri < 0) {
+            c.sound.play(c.sound.argh);
             c.t.life--;
             yPencuri = c.getHeight();
             xP = true;

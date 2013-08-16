@@ -35,6 +35,7 @@ public class StatePause implements State {
     }
 
     public void updateLogika() {
+        c.sound.play(c.sound.backsound1);
     }
 
     public void updateGambar(Graphics g) {
@@ -57,11 +58,11 @@ public class StatePause implements State {
                     imgPause = Image.createImage("/GameIPA6/Image/pause.png");
                     c.sound.setSilent(false);
                 } else {
-                        c.sound.play(c.sound.stop);
-                        imgPause = Image.createImage("/GameIPA6/Image/pausemute.png");
-                        c.sound.setSilent(true);
-                    }
-                }  catch (IOException ex) {
+                    c.sound.play(c.sound.stop);
+                    imgPause = Image.createImage("/GameIPA6/Image/pausemute.png");
+                    c.sound.setSilent(true);
+                }
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         } else if (x > 152 && y > 234 && x < 204 && y < 258) {

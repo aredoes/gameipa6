@@ -94,6 +94,7 @@ public class StateLevel5 implements State {
                 y = 180;
             }
             if (!plastik && tugas < 5) {
+                c.sound.play(c.sound.salah);
                 c.t.life--;
             }
 
@@ -108,6 +109,7 @@ public class StateLevel5 implements State {
             if (!plastik) {
                 tugas++;
             } else {
+                c.sound.play(c.sound.salah);
                 c.t.life--;
             }
         }
@@ -122,6 +124,7 @@ public class StateLevel5 implements State {
             if (!plastik) {
                 tugas++;
             } else {
+                c.sound.play(c.sound.salah);
                 c.t.life--;
             }
         }
@@ -134,6 +137,7 @@ public class StateLevel5 implements State {
                 y4 = 200;
             }
             if (!plastik && tugas < 5) {
+                c.sound.play(c.sound.salah);
                 c.t.life--;
             }
         }
