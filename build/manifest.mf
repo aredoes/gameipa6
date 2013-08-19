@@ -1,4 +1,4 @@
-MIDlet-1: Midlet, , GameIPA6.Control.Midlet
+MIDlet-1: Midlet,/Image/icon.png,GameIPA6.Control.Midlet
 MIDlet-Vendor: Vendor
 MIDlet-Name: GameIPA6
 MIDlet-Version: 1.0

@@ -19,7 +19,7 @@ public class Canvas extends GameCanvas implements Runnable {
 
     private boolean isGameJalan = true, isPindah = false;
     private Midlet m;
-    public State stateSekarang, stateSebelumnya, statePause, stateMenu, stateLoading, stateLoadingLevel1, stateLoadingLevel2, stateLoadingLevel3, stateLoadingLevel4, stateLoadingLevel5, stateLoadingLevel6, stateLoadingLevel7, stateLoadingLevel8, stateLoadingLevel9, stateLevel, stateLevel1aa, stateLevel1ab, stateLevel2, stateLevel3, stateLevel4, stateLevel5, stateLevel6, stateLevel7, stateLevel8, stateLevel9;
+    public State stateSekarang, stateSebelumnya, statePause, stateSplash, stateMenu, stateLoading, stateLoadingLevel1, stateLoadingLevel2, stateLoadingLevel3, stateLoadingLevel4, stateLoadingLevel5, stateLoadingLevel6, stateLoadingLevel7, stateLoadingLevel8, stateLoadingLevel9, stateLevel, stateLevel1aa, stateLevel1ab, stateLevel2, stateLevel3, stateLevel4, stateLevel5, stateLevel6, stateLevel7, stateLevel8, stateLevel9;
     public Tools t;
     public LoadInisialisasi ins;
     public Sound sound;
@@ -54,12 +54,15 @@ public class Canvas extends GameCanvas implements Runnable {
         stateLoadingLevel7 = new StateLoadingLevel7(this);
         stateLoadingLevel8 = new StateLoadingLevel8(this);
         stateLoadingLevel9 = new StateLoadingLevel9(this);
+        stateMenu = new StateMenu(this);
+        
         this.t = new Tools();
         this.ins = new LoadInisialisasi();
         this.sound = new Sound();
-        stateMenu = new StateMenu(this);
-        stateMenu.inisialisasi();
-        stateSekarang = stateMenu;
+        
+        stateSplash = new StateSplash(this);
+        stateSplash.inisialisasi();
+        stateSekarang = stateSplash;
     }
 
     public void run() {
