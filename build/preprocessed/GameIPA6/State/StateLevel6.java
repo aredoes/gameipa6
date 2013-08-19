@@ -36,7 +36,7 @@ public class StateLevel6 implements State {
             win = false;
             gagal = false;
             waktuHabis = false;
-            gmb = Image.createImage("/GameIPA6/Image/bab6/panci.png");
+            gmb = Image.createImage("/Image/bab6/panci.png");
             over = false;
             ov = 0;
         } catch (IOException ex) {
@@ -64,19 +64,19 @@ public class StateLevel6 implements State {
         try {
             switch (tugas) {
                 case (0):
-                    gmb = Image.createImage("/GameIPA6/Image/bab6/panci.png");
+                    gmb = Image.createImage("/Image/bab6/panci.png");
                     break;
                 case (1):
-                    gmb = Image.createImage("/GameIPA6/Image/bab6/toples.png");
+                    gmb = Image.createImage("/Image/bab6/toples.png");
                     break;
                 case (2):
-                    gmb = Image.createImage("/GameIPA6/Image/bab6/meja.png");
+                    gmb = Image.createImage("/Image/bab6/meja.png");
                     break;
                 case (3):
-                    gmb = Image.createImage("/GameIPA6/Image/bab6/sofa.png");
+                    gmb = Image.createImage("/Image/bab6/sofa.png");
                     break;
                 case (4):
-                    gmb = Image.createImage("/GameIPA6/Image/bab6/cermin.png");
+                    gmb = Image.createImage("/Image/bab6/cermin.png");
                     break;
                 case (5):
                     win = true;

@@ -59,22 +59,22 @@ public class StateLevel5 implements State {
         try {
             switch (tugas) {
                 case (0):
-                    c.ins.air = Image.createImage("/GameIPA6/Image/bab5/air.png");
+                    c.ins.air = Image.createImage("/Image/bab5/air.png");
                     break;
                 case (1):
-                    c.ins.air = Image.createImage("/GameIPA6/Image/bab5/air2.png");
+                    c.ins.air = Image.createImage("/Image/bab5/air2.png");
                     break;
                 case (2):
-                    c.ins.air = Image.createImage("/GameIPA6/Image/bab5/air3.png");
+                    c.ins.air = Image.createImage("/Image/bab5/air3.png");
                     break;
                 case (3):
-                    c.ins.air = Image.createImage("/GameIPA6/Image/bab5/air4.png");
+                    c.ins.air = Image.createImage("/Image/bab5/air4.png");
                     break;
                 case (4):
-                    c.ins.air = Image.createImage("/GameIPA6/Image/bab5/air5.png");
+                    c.ins.air = Image.createImage("/Image/bab5/air5.png");
                     break;
                 case (5):
-                    c.ins.air = Image.createImage("/GameIPA6/Image/bab5/air6.png");
+                    c.ins.air = Image.createImage("/Image/bab5/air6.png");
                     break;
             }
 
@@ -201,12 +201,12 @@ public class StateLevel5 implements State {
             try {
                 if (x > 0 && y > c.getHeight() - 110 && x < c.getWidth() / 2 && y < c.getHeight() - 60) {
                     c.sound.play(c.sound.menu);
-                    c.ins.pipa = Image.createImage("/GameIPA6/Image/bab5/pipa logam.png");
+                    c.ins.pipa = Image.createImage("/Image/bab5/pipa logam.png");
                     plastik = false;
                 }
                 if (x > c.getWidth() / 2 && y > c.getHeight() - 110 && x < c.getWidth() && y < c.getHeight() - 60) {
                     c.sound.play(c.sound.menu);
-                    c.ins.pipa = Image.createImage("/GameIPA6/Image/bab5/pipa plastik.png");
+                    c.ins.pipa = Image.createImage("/Image/bab5/pipa plastik.png");
                     plastik = true;
                 }
             } catch (IOException ex) {

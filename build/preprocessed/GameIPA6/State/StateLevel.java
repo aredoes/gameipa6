@@ -25,14 +25,14 @@ public class StateLevel implements State {
     public void inisialisasi() {
         try {
             c.sound.play(c.sound.stop);
-            imgLevelMenu = Image.createImage("/GameIPA6/Image/Level.png");
-            imgLevelLocked = Image.createImage("/GameIPA6/Image/Levellocked.png");
-            imgExit = Image.createImage("/GameIPA6/Image/Icon/X.png");
-            background = Image.createImage("/GameIPA6/Image/freepik.jpg");
+            imgLevelMenu = Image.createImage("/Image/Level.png");
+            imgLevelLocked = Image.createImage("/Image/Levellocked.png");
+            imgExit = Image.createImage("/Image/Icon/X.png");
+            background = Image.createImage("/Image/freepik.jpg");
             if (c.sound.getSilent() == true) {
-                imgSound = Image.createImage("/GameIPA6/Image/Icon/soundmute.png");
+                imgSound = Image.createImage("/Image/Icon/soundmute.png");
             } else {
-                imgSound = Image.createImage("/GameIPA6/Image/Icon/sound.png");
+                imgSound = Image.createImage("/Image/Icon/sound.png");
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -102,39 +102,39 @@ public class StateLevel implements State {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel1);
             }
-            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 ) {
+            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 0) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel2);
             }
-            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 ) {
+            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 1) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel3);
             }
         }
         if (y > c.getHeight() / 2 - 30 - 60 / 2 && y < c.getHeight() / 2 - 30 + 60 / 2) {
-            if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 ) {
+            if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 && c.t.level > 2) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel4);
             }
-            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 ) {
+            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 3) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel5);
             }
-            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 ) {
+            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 4) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel6);
             }
         }
         if (y > c.getHeight() / 2 + 50 - 60 / 2 && y < c.getHeight() / 2 + 50 + 60 / 2) {
-            if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 ) {
+            if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 && c.t.level > 5) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel7);
             }
-            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 ) {
+            if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 6) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel8);
             }
-            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 ) {
+            if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 7) {
                 c.sound.play(c.sound.beep);
                 c.pindahState(c.stateLoadingLevel9);
             }
@@ -142,10 +142,10 @@ public class StateLevel implements State {
         if (x > 92 && y > 313 && x < 149 && y < 368) {
             try {
                 if (c.sound.getSilent() == true) {
-                    imgSound = Image.createImage("/GameIPA6/Image/Icon/sound.png");
+                    imgSound = Image.createImage("/Image/Icon/sound.png");
                     c.sound.setSilent(false);
                 } else {
-                    imgSound = Image.createImage("/GameIPA6/Image/Icon/soundmute.png");
+                    imgSound = Image.createImage("/Image/Icon/soundmute.png");
                     c.sound.setSilent(true);
                 }
             } catch (IOException ex) {

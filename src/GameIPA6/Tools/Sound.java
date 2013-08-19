@@ -32,7 +32,7 @@ public class Sound {
     public Sound() {
         silent = false;
         try {
-//            slh = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/button-10.wav"), "audio/wav");
+//            slh = Manager.createPlayer(getClass().getResourceAsStream("/Sound/button-10.wav"), "audio/wav");
 //            mn = slh;
 //            pdg = slh;
 //            ub = slh;
@@ -41,14 +41,14 @@ public class Sound {
 //            arg = slh;
 //            b1 = slh;
             
-            slh = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/button-10.wav"), "audio/wav");
-            mn = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/button-30.wav"), "audio/wav");
-            pdg = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/Pedang.wav"), "audio/wav");
-            ub = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/button-2.wav"), "audio/wav");
-            clg = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/Cling.wav"), "audio/wav");
-            bp = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/button-9.wav"), "audio/wav");
-            arg = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/arg.wav"), "audio/wav");
-            b1 = Manager.createPlayer(getClass().getResourceAsStream("/GameIPA6/Sound/b1.mp3"), "audio/mp3");
+            slh = Manager.createPlayer(getClass().getResourceAsStream("/Sound/button-10.wav"), "audio/wav");
+            mn = Manager.createPlayer(getClass().getResourceAsStream("/Sound/button-30.wav"), "audio/wav");
+            pdg = Manager.createPlayer(getClass().getResourceAsStream("/Sound/Pedang.wav"), "audio/wav");
+            ub = Manager.createPlayer(getClass().getResourceAsStream("/Sound/button-2.wav"), "audio/wav");
+            clg = Manager.createPlayer(getClass().getResourceAsStream("/Sound/Cling.wav"), "audio/wav");
+            bp = Manager.createPlayer(getClass().getResourceAsStream("/Sound/button-9.wav"), "audio/wav");
+            arg = Manager.createPlayer(getClass().getResourceAsStream("/Sound/arg.wav"), "audio/wav");
+            b1 = Manager.createPlayer(getClass().getResourceAsStream("/Sound/b1.mp3"), "audio/mp3");
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (MediaException ex) {

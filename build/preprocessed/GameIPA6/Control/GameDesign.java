@@ -68,7 +68,7 @@ public class GameDesign {
     public Image getCicak() throws java.io.IOException {//GEN-BEGIN:|1-getter|0|1-preInit
         if (cicak == null) {//GEN-END:|1-getter|0|1-preInit
             // write pre-init user code here
-            cicak = Image.createImage("/GameIPA6/Image/cicak.png");//GEN-BEGIN:|1-getter|1|1-postInit
+            cicak = Image.createImage("/Image/cicak.png");//GEN-BEGIN:|1-getter|1|1-postInit
         }//GEN-END:|1-getter|1|1-postInit
         // write post-init user code here
         return this.cicak;//GEN-BEGIN:|1-getter|2|
@@ -77,7 +77,7 @@ public class GameDesign {
     public Image getCicakFull() throws java.io.IOException {//GEN-BEGIN:|4-getter|0|4-preInit
         if (CicakFull == null) {//GEN-END:|4-getter|0|4-preInit
             // write pre-init user code here
-            CicakFull = Image.createImage("/GameIPA6/Image/bab1/CicakFull.png");//GEN-BEGIN:|4-getter|1|4-postInit
+            CicakFull = Image.createImage("/Image/bab1/CicakFull.png");//GEN-BEGIN:|4-getter|1|4-postInit
         }//GEN-END:|4-getter|1|4-postInit
         // write post-init user code here
         return this.CicakFull;//GEN-BEGIN:|4-getter|2|
@@ -88,7 +88,7 @@ public class GameDesign {
     public Image getCicakFullKecil() throws java.io.IOException {//GEN-BEGIN:|7-getter|0|7-preInit
         if (CicakFullKecil == null) {//GEN-END:|7-getter|0|7-preInit
             // write pre-init user code here
-            CicakFullKecil = Image.createImage("/GameIPA6/Image/bab1/CicakFullKecil.png");//GEN-BEGIN:|7-getter|1|7-postInit
+            CicakFullKecil = Image.createImage("/Image/bab1/CicakFullKecil.png");//GEN-BEGIN:|7-getter|1|7-postInit
         }//GEN-END:|7-getter|1|7-postInit
         // write post-init user code here
         return this.CicakFullKecil;//GEN-BEGIN:|7-getter|2|
@@ -119,7 +119,7 @@ public class GameDesign {
     public Image getBalokHalang() throws java.io.IOException {//GEN-BEGIN:|54-getter|0|54-preInit
         if (BalokHalang == null) {//GEN-END:|54-getter|0|54-preInit
             // write pre-init user code here
-            BalokHalang = Image.createImage("/GameIPA6/Image/bab1/BalokHalang.png");//GEN-BEGIN:|54-getter|1|54-postInit
+            BalokHalang = Image.createImage("/Image/bab1/BalokHalang.png");//GEN-BEGIN:|54-getter|1|54-postInit
         }//GEN-END:|54-getter|1|54-postInit
         // write post-init user code here
         return this.BalokHalang;//GEN-BEGIN:|54-getter|2|
@@ -148,7 +148,7 @@ public class GameDesign {
     public Image getMalingall() throws java.io.IOException {//GEN-BEGIN:|59-getter|0|59-preInit
         if (malingall == null) {//GEN-END:|59-getter|0|59-preInit
             // write pre-init user code here
-            malingall = Image.createImage("/GameIPA6/Image/bab4/malingall.png");//GEN-BEGIN:|59-getter|1|59-postInit
+            malingall = Image.createImage("/Image/bab4/malingall.png");//GEN-BEGIN:|59-getter|1|59-postInit
         }//GEN-END:|59-getter|1|59-postInit
         // write post-init user code here
         return this.malingall;//GEN-BEGIN:|59-getter|2|
@@ -161,7 +161,7 @@ public class GameDesign {
     public Image getOrang() throws java.io.IOException {//GEN-BEGIN:|67-getter|0|67-preInit
         if (orang == null) {//GEN-END:|67-getter|0|67-preInit
             // write pre-init user code here
-            orang = Image.createImage("/GameIPA6/Image/bab4/orang.png");//GEN-BEGIN:|67-getter|1|67-postInit
+            orang = Image.createImage("/Image/bab4/orang.png");//GEN-BEGIN:|67-getter|1|67-postInit
         }//GEN-END:|67-getter|1|67-postInit
         // write post-init user code here
         return this.orang;//GEN-BEGIN:|67-getter|2|
@@ -172,7 +172,7 @@ public class GameDesign {
     public Image getDorongall() throws java.io.IOException {//GEN-BEGIN:|70-getter|0|70-preInit
         if (dorongall == null) {//GEN-END:|70-getter|0|70-preInit
             // write pre-init user code here
-            dorongall = Image.createImage("/GameIPA6/Image/bab7/dorongall.png");//GEN-BEGIN:|70-getter|1|70-postInit
+            dorongall = Image.createImage("/Image/bab7/dorongall.png");//GEN-BEGIN:|70-getter|1|70-postInit
         }//GEN-END:|70-getter|1|70-postInit
         // write post-init user code here
         return this.dorongall;//GEN-BEGIN:|70-getter|2|
@@ -183,7 +183,7 @@ public class GameDesign {
     public Image getHint() throws java.io.IOException {//GEN-BEGIN:|75-getter|0|75-preInit
         if (hint == null) {//GEN-END:|75-getter|0|75-preInit
             // write pre-init user code here
-            hint = Image.createImage("/GameIPA6/Image/Icon/hint.png");//GEN-BEGIN:|75-getter|1|75-postInit
+            hint = Image.createImage("/Image/Icon/hint.png");//GEN-BEGIN:|75-getter|1|75-postInit
         }//GEN-END:|75-getter|1|75-postInit
         // write post-init user code here
         return this.hint;//GEN-BEGIN:|75-getter|2|
@@ -194,7 +194,7 @@ public class GameDesign {
     public Image getAir5() throws java.io.IOException {//GEN-BEGIN:|78-getter|0|78-preInit
         if (air5 == null) {//GEN-END:|78-getter|0|78-preInit
             // write pre-init user code here
-            air5 = Image.createImage("/GameIPA6/Image/bab5/air5.png");//GEN-BEGIN:|78-getter|1|78-postInit
+            air5 = Image.createImage("/Image/bab5/air5.png");//GEN-BEGIN:|78-getter|1|78-postInit
         }//GEN-END:|78-getter|1|78-postInit
         // write post-init user code here
         return this.air5;//GEN-BEGIN:|78-getter|2|
@@ -215,7 +215,7 @@ public class GameDesign {
     public Image getOrangs() throws java.io.IOException {//GEN-BEGIN:|83-getter|0|83-preInit
         if (orangs == null) {//GEN-END:|83-getter|0|83-preInit
             // write pre-init user code here
-            orangs = Image.createImage("/GameIPA6/Image/bab3/orangs.png");//GEN-BEGIN:|83-getter|1|83-postInit
+            orangs = Image.createImage("/Image/bab3/orangs.png");//GEN-BEGIN:|83-getter|1|83-postInit
         }//GEN-END:|83-getter|1|83-postInit
         // write post-init user code here
         return this.orangs;//GEN-BEGIN:|83-getter|2|
@@ -226,7 +226,7 @@ public class GameDesign {
     public Image getPenebangs() throws java.io.IOException {//GEN-BEGIN:|86-getter|0|86-preInit
         if (penebangs == null) {//GEN-END:|86-getter|0|86-preInit
             // write pre-init user code here
-            penebangs = Image.createImage("/GameIPA6/Image/bab3/penebangs.png");//GEN-BEGIN:|86-getter|1|86-postInit
+            penebangs = Image.createImage("/Image/bab3/penebangs.png");//GEN-BEGIN:|86-getter|1|86-postInit
         }//GEN-END:|86-getter|1|86-postInit
         // write post-init user code here
         return this.penebangs;//GEN-BEGIN:|86-getter|2|
@@ -255,7 +255,7 @@ public class GameDesign {
     public Image getPenembak() throws java.io.IOException {//GEN-BEGIN:|93-getter|0|93-preInit
         if (penembak == null) {//GEN-END:|93-getter|0|93-preInit
             // write pre-init user code here
-            penembak = Image.createImage("/GameIPA6/Image/bab4/penembak.png");//GEN-BEGIN:|93-getter|1|93-postInit
+            penembak = Image.createImage("/Image/bab4/penembak.png");//GEN-BEGIN:|93-getter|1|93-postInit
         }//GEN-END:|93-getter|1|93-postInit
         // write post-init user code here
         return this.penembak;//GEN-BEGIN:|93-getter|2|
@@ -274,7 +274,7 @@ public class GameDesign {
     public Image getPemburuall() throws java.io.IOException {//GEN-BEGIN:|96-getter|0|96-preInit
         if (pemburuall == null) {//GEN-END:|96-getter|0|96-preInit
             // write pre-init user code here
-            pemburuall = Image.createImage("/GameIPA6/Image/bab4/pemburuall.png");//GEN-BEGIN:|96-getter|1|96-postInit
+            pemburuall = Image.createImage("/Image/bab4/pemburuall.png");//GEN-BEGIN:|96-getter|1|96-postInit
         }//GEN-END:|96-getter|1|96-postInit
         // write post-init user code here
         return this.pemburuall;//GEN-BEGIN:|96-getter|2|
@@ -293,7 +293,7 @@ public class GameDesign {
     public Image getPendorongall() throws java.io.IOException {//GEN-BEGIN:|100-getter|0|100-preInit
         if (pendorongall == null) {//GEN-END:|100-getter|0|100-preInit
             // write pre-init user code here
-            pendorongall = Image.createImage("/GameIPA6/Image/bab7/pendorongall.png");//GEN-BEGIN:|100-getter|1|100-postInit
+            pendorongall = Image.createImage("/Image/bab7/pendorongall.png");//GEN-BEGIN:|100-getter|1|100-postInit
         }//GEN-END:|100-getter|1|100-postInit
         // write post-init user code here
         return this.pendorongall;//GEN-BEGIN:|100-getter|2|

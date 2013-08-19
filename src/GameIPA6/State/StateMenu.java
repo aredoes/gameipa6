@@ -26,9 +26,9 @@ public class StateMenu implements State {
     public void inisialisasi() {
         try {
             if (c.sound.getSilent() == true) {
-                imgMenu = Image.createImage("/GameIPA6/Image/homemute.png");
+                imgMenu = Image.createImage("/Image/homemute.png");
             } else {
-                imgMenu = Image.createImage("/GameIPA6/Image/home.png");
+                imgMenu = Image.createImage("/Image/home.png");
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -59,11 +59,11 @@ public class StateMenu implements State {
             try {
                 if (c.sound.getSilent() == true) {
                     c.sound.play(c.sound.backsound1);
-                    imgMenu = Image.createImage("/GameIPA6/Image/home.png");
+                    imgMenu = Image.createImage("/Image/home.png");
                     c.sound.setSilent(false);
                 } else {
                     c.sound.play(c.sound.stop);
-                    imgMenu = Image.createImage("/GameIPA6/Image/homemute.png");
+                    imgMenu = Image.createImage("/Image/homemute.png");
                     c.sound.setSilent(true);
                 }
             } catch (IOException ex) {

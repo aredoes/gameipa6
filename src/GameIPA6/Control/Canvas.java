@@ -35,8 +35,8 @@ public class Canvas extends GameCanvas implements Runnable {
         stateLoading = new StateLoading(this);
         statePause = new StatePause(this);
         stateLevel = new StateLevel(this);
-        stateLevel1aa = new StateLevel1aa(this);
-        stateLevel1ab = new StateLevel1ab(this);
+        stateLevel1aa = new StateLevel1a(this);
+        stateLevel1ab = new StateLevel1b(this);
         stateLevel2 = new StateLevel2(this);
         stateLevel3 = new StateLevel3(this);
         stateLevel4 = new StateLevel4(this);

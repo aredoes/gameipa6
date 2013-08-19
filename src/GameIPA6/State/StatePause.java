@@ -25,9 +25,9 @@ public class StatePause implements State {
     public void inisialisasi() {
         try {
             if (c.sound.getSilent() == true) {
-                imgPause = Image.createImage("/GameIPA6/Image/pausemute.png");
+                imgPause = Image.createImage("/Image/pausemute.png");
             } else {
-                imgPause = Image.createImage("/GameIPA6/Image/pause.png");
+                imgPause = Image.createImage("/Image/pause.png");
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -55,11 +55,11 @@ public class StatePause implements State {
             try {
                 if (c.sound.getSilent() == true) {
                     c.sound.play(c.sound.backsound1);
-                    imgPause = Image.createImage("/GameIPA6/Image/pause.png");
+                    imgPause = Image.createImage("/Image/pause.png");
                     c.sound.setSilent(false);
                 } else {
                     c.sound.play(c.sound.stop);
-                    imgPause = Image.createImage("/GameIPA6/Image/pausemute.png");
+                    imgPause = Image.createImage("/Image/pausemute.png");
                     c.sound.setSilent(true);
                 }
             } catch (IOException ex) {

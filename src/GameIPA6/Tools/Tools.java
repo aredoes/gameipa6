@@ -28,8 +28,8 @@ public class Tools {
 
     public Tools() {
         try {
-            imgLife = Image.createImage("/GameIPA6/Image/Life.png");
-            imgExit = Image.createImage("/GameIPA6/Image/Icon/X.png");
+            imgLife = Image.createImage("/Image/Life.png");
+            imgExit = Image.createImage("/Image/Icon/X.png");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
