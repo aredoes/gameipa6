@@ -32,9 +32,9 @@ public class StateLoading implements State {
     }
 
     public void updateGambar(Graphics g) {
-        g.setColor(0, 255, 0);
-        g.fillRect(0, 0, c.getWidth(), c.getHeight());
         g.setColor(0, 0, 0);
+        g.fillRect(0, 0, c.getWidth(), c.getHeight());
+        g.setColor(255, 255, 255);
         g.drawString("Loading...", c.getWidth() / 2, c.getHeight() / 2, Graphics.HCENTER | Graphics.BASELINE);
     }
 

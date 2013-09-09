@@ -43,7 +43,7 @@ public class StateLevel4 implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         c.ins.penyelamat.setPosition(c.getWidth() / 2 - c.ins.penyelamat.getWidth() / 2 + xPenyelamat, 50);
         c.ins.pencuri.setPosition(c.getWidth() / 2 - c.ins.pencuri.getWidth() / 2 + xPencuri, yPencuri);
         yPencuri -= 1 + level;
@@ -54,7 +54,7 @@ public class StateLevel4 implements State {
         }
 
         if (yPencuri < 0) {
-            c.sound.play(c.sound.argh);
+            c.getAudioManager().playSample(c.argh);
             c.t.life--;
             yPencuri = c.getHeight();
             xP = true;
@@ -121,7 +121,7 @@ public class StateLevel4 implements State {
         if (win) {
             i++;
             if (i > 8) {
-                c.sound.play(c.sound.berubah);
+                c.getAudioManager().playSample(c.berubah);
                 c.t.win(g, c, true);
                 i = 0;
                 if (c.t.level == 3) {
@@ -150,10 +150,10 @@ public class StateLevel4 implements State {
 
             if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() - 60 && y < c.getHeight() - 60) {
                 if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.xPenyelamat > -60) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     this.xPenyelamat -= 15;
                 } else if (x > c.getWidth() - c.ins.imgRightArrow.getWidth() && x < c.getWidth() && this.xPenyelamat < 60) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     this.xPenyelamat += 15;
                 }
             }

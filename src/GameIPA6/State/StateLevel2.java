@@ -41,7 +41,7 @@ public class StateLevel2 implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         if (c.t.life == 0) {
             over = true;
             ov++;
@@ -102,7 +102,7 @@ public class StateLevel2 implements State {
             c.t.win(g, c, true);
             i++;
             if (i > 8) {
-                c.sound.play(c.sound.berubah);
+                c.getAudioManager().playSample(c.berubah);
                 if (c.t.level == 1) {
                     c.t.level++;
                 }
@@ -131,7 +131,7 @@ public class StateLevel2 implements State {
                 } else {
                     pgl = true;
                 }
-                c.sound.play(c.sound.beep);
+                c.getAudioManager().playSample(c.beep);
             }
             if (x > 89 && x < 153 && y > 122 && y < 160) {
                 if (pydr) {
@@ -139,7 +139,7 @@ public class StateLevel2 implements State {
                 } else {
                     pydr = true;
                 }
-                c.sound.play(c.sound.beep);
+                c.getAudioManager().playSample(c.beep);
             }
             if (x > 179 && x < 229 && y > 123 && y < 166) {
                 if (kms) {
@@ -147,7 +147,7 @@ public class StateLevel2 implements State {
                 } else {
                     kms = true;
                 }
-                c.sound.play(c.sound.beep);
+                c.getAudioManager().playSample(c.beep);
             }
             if (x > 95 && x < 146 && y > 184 && y < 228) {
                 if (jgt) {
@@ -155,17 +155,17 @@ public class StateLevel2 implements State {
                 } else {
                     jgt = true;
                 }
-                c.sound.play(c.sound.beep);
+                c.getAudioManager().playSample(c.beep);
             }
             if (x > 171 && x < 224 && y > 180 && y < 228) {
                 spr = true;
                 ovrm = false;
-                c.sound.play(c.sound.beep);
+                c.getAudioManager().playSample(c.beep);
             }
             if (x > 99 && x < 221 && y > 237 && y < 323) {
                 ovrm = true;
                 spr = false;
-                c.sound.play(c.sound.beep);
+                c.getAudioManager().playSample(c.beep);
             }
 
             c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
@@ -175,7 +175,7 @@ public class StateLevel2 implements State {
                     win = true;
                 } else {
                     gagal = true;
-                    c.sound.play(c.sound.salah);
+                    c.getAudioManager().playSample(c.salah);
                 }
             }
         }

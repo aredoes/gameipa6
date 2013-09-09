@@ -4,9 +4,11 @@
  */
 package GameIPA6.Control;
 
+//import GameIPA6.Tools.SoundEfect;
+//import GameIPA6.Tools.Backsound;
 import GameIPA6.State.*;
+import GameIPA6.Tools.AudioManager;
 import GameIPA6.Tools.LoadInisialisasi;
-import GameIPA6.Tools.Sound;
 import GameIPA6.Tools.Tools;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
@@ -22,12 +24,25 @@ public class Canvas extends GameCanvas implements Runnable {
     public State stateSekarang, stateSebelumnya, statePause, stateSplash, stateMenu, stateLoading, stateLoadingLevel1, stateLoadingLevel2, stateLoadingLevel3, stateLoadingLevel4, stateLoadingLevel5, stateLoadingLevel6, stateLoadingLevel7, stateLoadingLevel8, stateLoadingLevel9, stateLevel, stateLevel1aa, stateLevel1ab, stateLevel2, stateLevel3, stateLevel4, stateLevel5, stateLevel6, stateLevel7, stateLevel8, stateLevel9;
     public Tools t;
     public LoadInisialisasi ins;
-    public Sound sound;
-    
+//    public Backsound s;
+//    public SoundEfect sm;
+    private AudioManager audioManager;
+    //sound
+    public boolean silent = false;
+    public final String salah = "/Sound/button-10.wav";
+    public final String menu = "/Sound/button-30.wav";
+    public final String pedang = "/Sound/Pedang.wav";
+    public final String berubah = "/Sound/button-2.wav";
+    public final String cling = "/Sound/Cling.wav";
+    public final String beep = "/Sound/button-9.wav";
+    public final String argh = "/Sound/arg.wav";
+    public final String backsound = "/Sound/Cling.wav";
+    //sound
+
     public void setIsGameJalan(boolean isGameJalan) {
         this.isGameJalan = isGameJalan;
     }
-    
+
     public Canvas(Midlet m) {
         super(false);
         setFullScreenMode(true);
@@ -55,30 +70,29 @@ public class Canvas extends GameCanvas implements Runnable {
         stateLoadingLevel8 = new StateLoadingLevel8(this);
         stateLoadingLevel9 = new StateLoadingLevel9(this);
         stateMenu = new StateMenu(this);
-        
+
         this.t = new Tools();
         this.ins = new LoadInisialisasi();
-        this.sound = new Sound();
-        
+//        this.s = new Backsound();        
+//        this.sm = new SoundEfect();
+        audioManager = AudioManager.getInstance();
+
         stateSplash = new StateSplash(this);
-        stateSplash.inisialisasi();
-        stateSekarang = stateSplash;
+        stateMenu.inisialisasi();
+        stateSekarang = stateMenu;
     }
 
     public void run() {
         Graphics g = getGraphics();
         while (isGameJalan) {
-            flushGraphics();
             try {
                 stateSekarang.updateLogika();
                 stateSekarang.updateGambar(g);
-                if (isPindah) {
-                    stateSekarang.hapusResource();
-                }
                 Thread.sleep(40);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
+            flushGraphics();
         }
         this.m.destroyApp(true);
     }
@@ -88,20 +102,28 @@ public class Canvas extends GameCanvas implements Runnable {
     }
 
     public void pindahState(State state) {
-        isPindah = true;
+        stateSebelumnya = stateSekarang;
+        stateSekarang = state;
+        stateSekarang.inisialisasi();
+        stateSebelumnya.hapusResource();
         System.gc();
+    }
+
+    public void pause(State state) {
         stateSebelumnya = stateSekarang;
         stateSekarang = state;
         stateSekarang.inisialisasi();
         System.gc();
-        isPindah = false;
     }
     
-    public void pause(State state) {
-        isPindah = true;
+    public void back() {
+        stateSekarang.hapusResource();
         System.gc();
-        stateSekarang = state;
+        stateSekarang = stateSebelumnya;
         System.gc();
-        isPindah = false;
+    }
+
+    public AudioManager getAudioManager() {
+        return audioManager;
     }
 }

@@ -36,7 +36,7 @@ public class StateLevel1b implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         c.ins.cicakSprite.setPosition(c.getWidth() / 2 - c.ins.cicakSprite.getWidth() / 2 + x, c.getHeight() - c.ins.cicakSprite.getHeight() - c.ins.imgLeftArrow.getHeight());
         c.ins.balokHalang1.setPosition(c.getWidth() / 2 - c.ins.balokHalang1.getWidth() / 2 + xh1, yh - c.ins.balokHalang1.getHeight());
         c.ins.balokHalang2.setPosition(c.getWidth() / 2 - c.ins.balokHalang2.getWidth() / 2 + xh2, yh - c.ins.balokHalang2.getHeight());
@@ -52,7 +52,7 @@ public class StateLevel1b implements State {
             c.ins.cicakSprite.setFrameSequence(c.ins.gd.CicakSpriteHit);
             i++;
             if (i > 8) {
-                c.sound.play(c.sound.argh);
+                c.getAudioManager().playSample(c.argh);
                 xh1 = c.t.randomInt();
                 xh2 = c.t.randomInt2();
                 yh = 0;
@@ -94,7 +94,7 @@ public class StateLevel1b implements State {
             c.t.win(g, c, true);
             j++;
             if (j > 8) {
-                c.sound.play(c.sound.berubah);
+                c.getAudioManager().playSample(c.berubah);
                 if (c.t.level == 0) {
                     c.t.level++;
                 }
@@ -119,15 +119,17 @@ public class StateLevel1b implements State {
 
     public void tapEvent(int x, int y) {
         if (!over) {
-            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
-
+            if (x > 0 && x < 40 && y > 0 && y < 40) {
+                c.pause(c.statePause);
+                c.getAudioManager().playSample(c.beep);
+            }
             if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() && y < c.getHeight() && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang1, true) && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang2, true) && finish <= 5) {
                 if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.x > -75) {
                     this.x -= 25;
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                 } else if (x > c.getWidth() - c.ins.imgRightArrow.getWidth() && x < c.getWidth() && this.x < 75) {
                     this.x += 25;
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                 }
             }
         }

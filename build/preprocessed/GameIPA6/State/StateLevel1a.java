@@ -33,7 +33,7 @@ public class StateLevel1a implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         if (c.t.life == 0) {
             over = true;
             ov++;
@@ -88,7 +88,7 @@ public class StateLevel1a implements State {
     }
 
     public void hapusResource() {
-        c.sound.play(c.sound.stop);
+        c.getAudioManager().stopAll();
     }
 
     public void tapEvent(int x, int y) {
@@ -97,15 +97,16 @@ public class StateLevel1a implements State {
                 c.t.life--;
                 this.x = 0;
                 salah = true;
-                c.sound.play(c.sound.salah);
+                c.getAudioManager().playSample(c.salah);
+                
             }
             if (x > 100 && y > 287 && x < 138 && y < 323) {
                 benar = true;
-                c.sound.play(c.sound.berubah);
+                c.getAudioManager().playSample(c.berubah);
             }
             if (x > 0 && x < 40 && y > 0 && y < 40) {
-                c.pindahState(c.statePause);
-                c.sound.play(c.sound.beep);
+                c.pause(c.statePause);
+                c.getAudioManager().playSample(c.beep);
             }
         }
     }

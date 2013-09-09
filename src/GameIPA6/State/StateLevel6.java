@@ -45,7 +45,7 @@ public class StateLevel6 implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         if (tugas > 0 && !win) {
             time--;
         }
@@ -122,7 +122,7 @@ public class StateLevel6 implements State {
                 c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    c.sound.play(c.sound.berubah);
+                    c.getAudioManager().playSample(c.berubah);
                     if (c.t.level == 5) {
                         if (c.t.level == 5) {
                             c.t.level++;
@@ -160,10 +160,10 @@ public class StateLevel6 implements State {
                 c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
                 if (x > 21 && y > 272 && x < 51 && y < 324) {
                     if (tugas == 1) {
-                        c.sound.play(c.sound.menu);
+                        c.getAudioManager().playSample(c.menu);
                         tugas++;
                     } else {
-                        c.sound.play(c.sound.salah);
+                        c.getAudioManager().playSample(c.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;
@@ -171,10 +171,10 @@ public class StateLevel6 implements State {
                 }
                 if (x > 62 && y > 272 && x < 96 && y < 324) {
                     if (tugas == 0) {
-                        c.sound.play(c.sound.menu);
+                        c.getAudioManager().playSample(c.menu);
                         tugas++;
                     } else {
-                        c.sound.play(c.sound.salah);
+                        c.getAudioManager().playSample(c.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;
@@ -182,10 +182,10 @@ public class StateLevel6 implements State {
                 }
                 if (x > 106 && y > 272 && x < 133 && y < 324) {
                     if (tugas == 3) {
-                        c.sound.play(c.sound.menu);
+                        c.getAudioManager().playSample(c.menu);
                         tugas++;
                     } else {
-                        c.sound.play(c.sound.salah);
+                        c.getAudioManager().playSample(c.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;
@@ -193,10 +193,10 @@ public class StateLevel6 implements State {
                 }
                 if (x > 141 && y > 272 && x < 177 && y < 324) {
                     if (tugas == 4) {
-                        c.sound.play(c.sound.menu);
+                        c.getAudioManager().playSample(c.menu);
                         tugas++;
                     } else {
-                        c.sound.play(c.sound.salah);
+                        c.getAudioManager().playSample(c.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;
@@ -204,10 +204,10 @@ public class StateLevel6 implements State {
                 }
                 if (x > 184 && y > 274 && x < 220 && y < 326) {
                     if (tugas == 2) {
-                        c.sound.play(c.sound.menu);
+                        c.getAudioManager().playSample(c.menu);
                         tugas++;
                     } else {
-                        c.sound.play(c.sound.salah);
+                        c.getAudioManager().playSample(c.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;

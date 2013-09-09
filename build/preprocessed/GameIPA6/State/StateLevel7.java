@@ -41,7 +41,7 @@ public class StateLevel7 implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         ket = "Taruh disini";
         //waktu habis
         if (limit < 1) {
@@ -104,7 +104,7 @@ public class StateLevel7 implements State {
                 c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    c.sound.play(c.sound.berubah);
+                    c.getAudioManager().playSample(c.berubah);
                     if (c.t.level == 6) {
                         c.t.level++;
                     }
@@ -139,7 +139,7 @@ public class StateLevel7 implements State {
                 //arah
                 if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight() && !win) {
                     if (x > c.getWidth() - c.ins.imgRun.getWidth() && x < c.getWidth()) {
-                        c.sound.play(c.sound.menu);
+                        c.getAudioManager().playSample(c.menu);
                         c.ins.pendorong.nextFrame();
                         this.x += 3;
                     }

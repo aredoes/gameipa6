@@ -55,7 +55,7 @@ public class StateLevel9 implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         if (tgs > 0) {
             time--;
         }
@@ -176,7 +176,7 @@ public class StateLevel9 implements State {
                 c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    c.sound.play(c.sound.berubah);
+                    c.getAudioManager().playSample(c.berubah);
                     if (c.t.level == 8) {
                         c.t.level++;
                     }
@@ -220,63 +220,63 @@ public class StateLevel9 implements State {
 
                 //matahari
                 if (x > 46 && x < 86 && y > 96 && y < 139) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     matahari = true;
                     planet[0] = tugas;
                     tgs++;
                 }
                 //merkurius
                 if (x > 99 && x < 141 && y > 96 && y < 139) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     merkurius = true;
                     planet[1] = tugas;
                     tgs++;
                 }
                 //venus
                 if (x > 154 && x < 195 && y > 96 && y < 139) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     venus = true;
                     planet[2] = tugas;
                     tgs++;
                 }
                 //bumi
                 if (x > 46 && x < 86 && y > 149 && y < 192) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     bumi = true;
                     planet[3] = tugas;
                     tgs++;
                 }
                 //mars
                 if (x > 99 && x < 141 && y > 149 && y < 192) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     mars = true;
                     planet[4] = tugas;
                     tgs++;
                 }
                 //yupiter
                 if (x > 154 && x < 195 && y > 149 && y < 192) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     yupiter = true;
                     planet[5] = tugas;
                     tgs++;
                 }
                 //saturnus
                 if (x > 46 && x < 86 && y > 204 && y < 248) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     saturnus = true;
                     planet[6] = tugas;
                     tgs++;
                 }
                 //uranus
                 if (x > 99 && x < 141 && y > 204 && y < 248) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     uranus = true;
                     planet[7] = tugas;
                     tgs++;
                 }
                 //neptunus
                 if (x > 154 && x < 195 && y > 204 && y < 248) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     neptunus = true;
                     planet[8] = tugas;
                     tgs++;

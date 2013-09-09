@@ -111,7 +111,7 @@ public class StateLoadingLevel7 implements State {
                     story++;
                 } else {
                     next = true;
-                    c.sound.play(c.sound.berubah);
+                    c.getAudioManager().playSample(c.berubah);
                 }
             }
         }

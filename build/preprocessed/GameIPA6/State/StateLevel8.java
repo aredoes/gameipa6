@@ -44,7 +44,7 @@ public class StateLevel8 implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         if (!win) {
             if (kakak) {
                 limit--;
@@ -216,7 +216,7 @@ public class StateLevel8 implements State {
                 c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    c.sound.play(c.sound.berubah);
+                    c.getAudioManager().playSample(c.berubah);
                     if (c.t.level == 7) {
                         c.t.level++;
                     }
@@ -248,7 +248,7 @@ public class StateLevel8 implements State {
                 c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
 
                 if (x > 33 && x < 78 && y > 112 && y < 152) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     if (kakak) {
                         kakak = false;
                     } else {
@@ -256,7 +256,7 @@ public class StateLevel8 implements State {
                     }
                 }
                 if (x > 33 && x < 78 && y > 185 && y < 222) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     if (makan) {
                         makan = false;
                     } else {
@@ -264,7 +264,7 @@ public class StateLevel8 implements State {
                     }
                 }
                 if (x > 100 && x < 145 && y > 134 && y < 172) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     if (ortu) {
                         ortu = false;
                     } else {
@@ -272,7 +272,7 @@ public class StateLevel8 implements State {
                     }
                 }
                 if (x > 166 && x < 210 && y > 112 && y < 152) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     if (adik) {
                         adik = false;
                     } else {
@@ -280,7 +280,7 @@ public class StateLevel8 implements State {
                     }
                 }
                 if (x > 166 && x < 210 && y > 185 && y < 222) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     if (mandi) {
                         mandi = false;
                     } else {

@@ -25,18 +25,19 @@ public class StateLoadingLevel1 implements State {
     }
 
     public void inisialisasi() {
+        try {
+            Thread.sleep(40);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
         count = 0;
-        pelajaran = 0;
+        pelajaran = c.t.randomInt2();
         page = 1;
         story = 1;
         next = false;
     }
 
     public void updateLogika() {
-        if (count == 0) {
-            pelajaran = c.t.randomInt2();
-        }
-
         if (count > 12) {
             page = 2;
         } else {
@@ -119,6 +120,7 @@ public class StateLoadingLevel1 implements State {
         c.ins.cek = null;
         c.ins.story1 = null;
         c.ins.story2 = null;
+        c.getAudioManager().stopAll();
     }
 
     public void tapEvent(int x, int y) {
@@ -126,9 +128,10 @@ public class StateLoadingLevel1 implements State {
             if (x > c.getWidth() - c.ins.cek.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.cek.getHeight() && y < c.getHeight()) {
                 if (story < 3) {
                     story++;
+                    c.getAudioManager().playSample(c.menu);
                 } else {
                     next = true;
-                    c.sound.play(c.sound.berubah);
+                    c.getAudioManager().playSample(c.berubah);
                 }
             }
         }

@@ -41,7 +41,7 @@ public class StateLevel3 implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         if (xBackground == c.ins.imgBackground.getWidth()) {
             xBackground = -c.ins.imgBackground.getWidth();
         } else if (xBackground2 == c.ins.imgBackground.getWidth()) {
@@ -114,7 +114,7 @@ public class StateLevel3 implements State {
                 c.t.win(g, c, true);
                 i++;
                 if (i > 8) {
-                    c.sound.play(c.sound.berubah);
+                    c.getAudioManager().playSample(c.berubah);
                     if (c.t.level == 2) {
                         c.t.level++;
                     }
@@ -151,7 +151,7 @@ public class StateLevel3 implements State {
                 //arah
                 if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight() && !finish) {
                     if (x > c.getWidth() - c.ins.imgRun.getWidth() && x < c.getWidth()) {
-                        c.sound.play(c.sound.menu);
+                        c.getAudioManager().playSample(c.menu);
                         this.x += 4;
                         c.ins.orang.nextFrame();
                     }

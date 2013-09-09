@@ -113,7 +113,7 @@ public class StateLoadingLevel4 implements State {
                     story++;
                 } else {
                     next = true;
-                    c.sound.play(c.sound.berubah);
+                    c.getAudioManager().playSample(c.berubah);
                 }
             }
         }

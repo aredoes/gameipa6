@@ -44,7 +44,7 @@ public class StateLevel5 implements State {
     }
 
     public void updateLogika() {
-        c.sound.play(c.sound.backsound1);
+//        c.getAudioManager().playSample(c.backsound1);
         if (c.t.life == 0) {
             over = true;
             ov++;
@@ -94,7 +94,7 @@ public class StateLevel5 implements State {
                 y = 180;
             }
             if (!plastik && tugas < 5) {
-                c.sound.play(c.sound.salah);
+                c.getAudioManager().playSample(c.salah);
                 c.t.life--;
             }
 
@@ -109,7 +109,7 @@ public class StateLevel5 implements State {
             if (!plastik) {
                 tugas++;
             } else {
-                c.sound.play(c.sound.salah);
+                c.getAudioManager().playSample(c.salah);
                 c.t.life--;
             }
         }
@@ -124,7 +124,7 @@ public class StateLevel5 implements State {
             if (!plastik) {
                 tugas++;
             } else {
-                c.sound.play(c.sound.salah);
+                c.getAudioManager().playSample(c.salah);
                 c.t.life--;
             }
         }
@@ -137,7 +137,7 @@ public class StateLevel5 implements State {
                 y4 = 200;
             }
             if (!plastik && tugas < 5) {
-                c.sound.play(c.sound.salah);
+                c.getAudioManager().playSample(c.salah);
                 c.t.life--;
             }
         }
@@ -172,7 +172,7 @@ public class StateLevel5 implements State {
             c.t.win(g, c, true);
             i++;
             if (i > 8) {
-                c.sound.play(c.sound.berubah);
+                c.getAudioManager().playSample(c.berubah);
                 i = 0;
                 if (c.t.level == 4) {
                     c.t.level++;
@@ -200,12 +200,12 @@ public class StateLevel5 implements State {
             c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
             try {
                 if (x > 0 && y > c.getHeight() - 110 && x < c.getWidth() / 2 && y < c.getHeight() - 60) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     c.ins.pipa = Image.createImage("/Image/bab5/pipa logam.png");
                     plastik = false;
                 }
                 if (x > c.getWidth() / 2 && y > c.getHeight() - 110 && x < c.getWidth() && y < c.getHeight() - 60) {
-                    c.sound.play(c.sound.menu);
+                    c.getAudioManager().playSample(c.menu);
                     c.ins.pipa = Image.createImage("/Image/bab5/pipa plastik.png");
                     plastik = true;
                 }
