@@ -73,21 +73,21 @@ public class Canvas extends GameCanvas implements Runnable {
 
         this.t = new Tools();
         this.ins = new LoadInisialisasi();
-//        this.s = new Backsound();        
-//        this.sm = new SoundEfect();
         audioManager = AudioManager.getInstance();
 
         stateSplash = new StateSplash(this);
-        stateMenu.inisialisasi();
-        stateSekarang = stateMenu;
+        stateSplash.inisialisasi();
+        stateSekarang = stateSplash;
     }
 
     public void run() {
         Graphics g = getGraphics();
         while (isGameJalan) {
             try {
-                stateSekarang.updateLogika();
-                stateSekarang.updateGambar(g);
+                if (!isPindah) {
+                    stateSekarang.updateLogika();
+                    stateSekarang.updateGambar(g);
+                }
                 Thread.sleep(40);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
@@ -102,20 +102,22 @@ public class Canvas extends GameCanvas implements Runnable {
     }
 
     public void pindahState(State state) {
+        isPindah = true;
         stateSebelumnya = stateSekarang;
+        state.inisialisasi();
         stateSekarang = state;
-        stateSekarang.inisialisasi();
         stateSebelumnya.hapusResource();
         System.gc();
+        isPindah = false;
     }
 
     public void pause(State state) {
         stateSebelumnya = stateSekarang;
+        state.inisialisasi();
         stateSekarang = state;
-        stateSekarang.inisialisasi();
         System.gc();
     }
-    
+
     public void back() {
         stateSekarang.hapusResource();
         System.gc();

@@ -157,7 +157,7 @@ public class StateLevel6 implements State {
                     time = 60;
                 }
             } else if (!win) {
-                c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+                c.t.tapPause(x, y, c);
                 if (x > 21 && y > 272 && x < 51 && y < 324) {
                     if (tugas == 1) {
                         c.getAudioManager().playSample(c.menu);

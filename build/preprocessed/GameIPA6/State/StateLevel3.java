@@ -139,7 +139,7 @@ public class StateLevel3 implements State {
 
     public void tapEvent(int x, int y) {
         if (!over) {
-            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            c.t.tapPause(x, y, c);
             if (waktuHabis) {
                 if (x > 0 && y > c.getHeight() / 2 - 25 && x < c.getWidth() && y < c.getHeight() / 2 + 25) {
                     waktuHabis = false;

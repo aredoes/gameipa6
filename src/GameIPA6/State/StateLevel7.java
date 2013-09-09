@@ -134,7 +134,7 @@ public class StateLevel7 implements State {
                     waktuHabis = false;
                 }
             } else if (!win) {
-                c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+                c.t.tapPause(x, y, c);
 
                 //arah
                 if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight() && !win) {

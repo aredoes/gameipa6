@@ -245,8 +245,7 @@ public class StateLevel8 implements State {
                     waktuHabis = false;
                 }
             } else if (!win) {
-                c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
-
+                c.t.tapPause(x, y, c);
                 if (x > 33 && x < 78 && y > 112 && y < 152) {
                     c.getAudioManager().playSample(c.menu);
                     if (kakak) {

@@ -197,7 +197,7 @@ public class StateLevel5 implements State {
 
     public void tapEvent(int x, int y) {
         if (!over) {
-            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            c.t.tapPause(x, y, c);
             try {
                 if (x > 0 && y > c.getHeight() - 110 && x < c.getWidth() / 2 && y < c.getHeight() - 60) {
                     c.getAudioManager().playSample(c.menu);

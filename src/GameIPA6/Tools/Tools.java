@@ -29,7 +29,7 @@ public class Tools {
     public Tools() {
         try {
             imgLife = Image.createImage("/Image/Life.png");
-            imgExit = Image.createImage("/Image/Icon/X.png");
+            imgExit = Image.createImage("/Image/Icon/cross.png");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -40,6 +40,12 @@ public class Tools {
             if (x > xRumus - width / 2 && x < xRumus + width / 2) {
                 c.pindahState(statePindah);
             }
+        }
+    }
+    public void tapPause(int x, int y, Canvas c){
+        if (x > 0 && x < 40 && y > 0 && y < 40) {
+            c.pause(c.statePause);
+            c.getAudioManager().playSample(c.beep);
         }
     }
 
@@ -111,26 +117,4 @@ public class Tools {
         int index = random.nextInt(xAxis.length);
         return xAxis[index];
     }
-
-//    public void tapRect(int x, int y, int xRumus, int yRumus, int width, int height, Canvas c, State statePindah) {
-//        if (y > yRumus && y < yRumus + height) {
-//            if (x > xRumus && x < xRumus + width) {
-//                c.pindahState(statePindah);
-//            }
-//        }
-//    }
-//    public void tapImgLife(int x, int y, int xRumus, int yRumus, int width, int height, Canvas c) {
-//        if (y > yRumus - height / 2 && y < yRumus + height / 2) {
-//            if (x > xRumus - width / 2 && x < xRumus + width / 2) {
-//                life--;
-//            }
-//        }
-//    }
-//    public void drawRectTxt(int rk, int gk, int bk, int rs, int gs, int bs, int xRumus, int yRumus, int width, int height, String string, Canvas c, Graphics g) {
-//        g.setColor(rk, gk, bk);
-//        g.fillRect(xRumus, yRumus, width, height);
-//        g.setColor(rs, gs, bs);
-//        g.drawString(string, xRumus + width / 2, yRumus + height / 2 + 5, Graphics.BASELINE | Graphics.HCENTER);
-//    }
-    
 }

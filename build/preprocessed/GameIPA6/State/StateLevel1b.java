@@ -119,10 +119,7 @@ public class StateLevel1b implements State {
 
     public void tapEvent(int x, int y) {
         if (!over) {
-            if (x > 0 && x < 40 && y > 0 && y < 40) {
-                c.pause(c.statePause);
-                c.getAudioManager().playSample(c.beep);
-            }
+            c.t.tapPause(x, y, c);
             if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() && y < c.getHeight() && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang1, true) && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang2, true) && finish <= 5) {
                 if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.x > -75) {
                     this.x -= 25;

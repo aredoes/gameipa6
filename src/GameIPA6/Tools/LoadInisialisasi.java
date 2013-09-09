@@ -107,7 +107,7 @@ public class LoadInisialisasi {
                 ovarium = Image.createImage("/Image/bab2/ovarium.png");
                 break;
             case (8):
-                imgCheck = Image.createImage("/Image/Icon/V.png");
+                imgCheck = Image.createImage("/Image/Icon/check.png");
                 break;
             case (9):
                 story1 = Image.createImage("/Image/bab2/story1.png");

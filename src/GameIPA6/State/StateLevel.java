@@ -28,7 +28,7 @@ public class StateLevel implements State {
             c.getAudioManager().stopAll();
             imgLevelMenu = Image.createImage("/Image/Level.png");
             imgLevelLocked = Image.createImage("/Image/Levellocked.png");
-            imgExit = Image.createImage("/Image/Icon/X.png");
+            imgExit = Image.createImage("/Image/Icon/cross.png");
             background = Image.createImage("/Image/freepik.jpg");
             if (c.silent == true) {
                 imgSound = Image.createImage("/Image/Icon/soundmute.png");
@@ -45,6 +45,8 @@ public class StateLevel implements State {
 
     public void updateGambar(Graphics g) {
         g.drawImage(background, c.getWidth() / 2, c.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+        g.drawImage(imgExit, c.getWidth() - imgExit.getWidth() / 2, imgExit.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
+        g.drawImage(imgSound, c.getWidth() / 2, c.getHeight() - imgSound.getHeight(), Graphics.HCENTER | Graphics.VCENTER);
         c.t.drawImgTxt(0, 0, 0, c.getWidth() / 2 - 80, c.getHeight() / 2 - 110, imgLevelMenu, "Level 1", c, g);
         if (c.t.level > 0) {
             c.t.drawImgTxt(0, 0, 0, c.getWidth() / 2, c.getHeight() / 2 - 110, imgLevelMenu, "Level 2", c, g);
@@ -86,9 +88,6 @@ public class StateLevel implements State {
         } else {
             c.t.drawImgTxt(0, 0, 0, c.getWidth() / 2 + 80, c.getHeight() / 2 + 50, imgLevelLocked, "Level 9", c, g);
         }
-
-        g.drawImage(imgExit, c.getWidth() - imgExit.getWidth() / 2, imgExit.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
-        g.drawImage(imgSound, c.getWidth() / 2, c.getHeight() - imgSound.getHeight(), Graphics.HCENTER | Graphics.VCENTER);
     }
 
     public void hapusResource() {

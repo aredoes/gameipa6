@@ -125,6 +125,15 @@ public class StateLevel2 implements State {
 
     public void tapEvent(int x, int y) {
         if (! over && !win) {
+            c.t.tapPause(x, y, c);
+            if (x > c.getWidth() - c.ins.imgCheck.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.imgCheck.getHeight() && y < c.getHeight()) {
+                if (kms && jgt && spr && !pydr && !pgl && !ovrm || !kms && !jgt && !spr && pydr && pgl && ovrm) {
+                    win = true;
+                } else {
+                    gagal = true;
+                    c.getAudioManager().playSample(c.salah);
+                }
+            }
             if (x > 131 && x < 200 && y > 22 && y < 110) {
                 if (pgl) {
                     pgl = false;
@@ -166,17 +175,6 @@ public class StateLevel2 implements State {
                 ovrm = true;
                 spr = false;
                 c.getAudioManager().playSample(c.beep);
-            }
-
-            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
-
-            if (x > c.getWidth() - c.ins.imgCheck.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.imgCheck.getHeight() && y < c.getHeight()) {
-                if (kms && jgt && spr && !pydr && !pgl && !ovrm || !kms && !jgt && !spr && pydr && pgl && ovrm) {
-                    win = true;
-                } else {
-                    gagal = true;
-                    c.getAudioManager().playSample(c.salah);
-                }
             }
         }
     }

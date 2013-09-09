@@ -216,8 +216,7 @@ public class StateLevel9 implements State {
                     c.t.life--;
                 }
             } else if (!win) {
-                c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
-
+                c.t.tapPause(x, y, c);
                 //matahari
                 if (x > 46 && x < 86 && y > 96 && y < 139) {
                     c.getAudioManager().playSample(c.menu);

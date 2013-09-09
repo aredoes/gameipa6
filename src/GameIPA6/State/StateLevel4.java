@@ -146,7 +146,7 @@ public class StateLevel4 implements State {
 
     public void tapEvent(int x, int y) {
         if (!over) {
-            c.t.tapImg(x, y, 20, 20, 40, 40, c, c.statePause);
+            c.t.tapPause(x, y, c);
 
             if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() - 60 && y < c.getHeight() - 60) {
                 if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.xPenyelamat > -60) {
