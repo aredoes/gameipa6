@@ -38,10 +38,12 @@ public class StateLevel3 implements State {
         waktuHabis = false;
         over = false;
         ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
+        }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         if (xBackground == c.ins.imgBackground.getWidth()) {
             xBackground = -c.ins.imgBackground.getWidth();
         } else if (xBackground2 == c.ins.imgBackground.getWidth()) {

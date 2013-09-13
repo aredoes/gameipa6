@@ -149,7 +149,6 @@ public class StateLevel implements State {
                     c.getAudioManager().stopAll();
                     imgSound = Image.createImage("/Image/Icon/soundmute.png");
                 } else {
-                    c.getAudioManager().playSample(c.backsound);
                     imgSound = Image.createImage("/Image/Icon/sound.png");
                 }
             } catch (IOException ex) {

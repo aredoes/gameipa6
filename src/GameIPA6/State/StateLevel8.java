@@ -41,10 +41,12 @@ public class StateLevel8 implements State {
         tugasSelesai = 0;
         over = false;
         ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
+        }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         if (!win) {
             if (kakak) {
                 limit--;

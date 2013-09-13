@@ -33,10 +33,12 @@ public class StateLevel1b implements State {
         yh = c.getHeight() + c.ins.balokHalang1.getHeight();
         over = false;
         ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
+        }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         c.ins.cicakSprite.setPosition(c.getWidth() / 2 - c.ins.cicakSprite.getWidth() / 2 + x, c.getHeight() - c.ins.cicakSprite.getHeight() - c.ins.imgLeftArrow.getHeight());
         c.ins.balokHalang1.setPosition(c.getWidth() / 2 - c.ins.balokHalang1.getWidth() / 2 + xh1, yh - c.ins.balokHalang1.getHeight());
         c.ins.balokHalang2.setPosition(c.getWidth() / 2 - c.ins.balokHalang2.getWidth() / 2 + xh2, yh - c.ins.balokHalang2.getHeight());

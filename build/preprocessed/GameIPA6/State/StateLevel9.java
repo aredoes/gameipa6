@@ -52,10 +52,12 @@ public class StateLevel9 implements State {
         planet[8] = "";
         over = false;
         ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
+        }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         if (tgs > 0) {
             time--;
         }

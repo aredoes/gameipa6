@@ -52,7 +52,7 @@ public class StateLoadingLevel3 implements State {
     }
 
     public void updateGambar(Graphics g) {
-        g.setColor(255, 255, 0);
+        g.setColor(0xccfaff);
         g.fillRect(0, 0, c.getWidth(), c.getHeight());
         g.setColor(0, 0, 0);
 

@@ -33,15 +33,17 @@ public class StateLevel7 implements State {
         c.ins.pendorong.setFrameSequence(c.ins.gd.pendorongseq001);
         x = 0;
         i = 0;
-        limit = 60;
+        limit = 120;
         waktuHabis = false;
         win = false;
         over = false;
         ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
+        }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         ket = "Taruh disini";
         //waktu habis
         if (limit < 1) {
@@ -53,7 +55,7 @@ public class StateLevel7 implements State {
                 waktuHabis = true;
                 c.t.life--;
                 x = 0;
-                limit = 60;
+                limit = 120;
             }
         } else if (x >= 101 && x <= 103) {
             ket = "Stop, sudah pas!!";

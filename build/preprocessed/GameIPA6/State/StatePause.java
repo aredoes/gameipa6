@@ -45,7 +45,6 @@ public class StatePause implements State {
 
     public void hapusResource() {
         imgPause = null;
-        c.getAudioManager().stopAll();
     }
 
     public void tapEvent(int x, int y) {

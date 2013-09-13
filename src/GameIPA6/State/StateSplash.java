@@ -32,7 +32,7 @@ public class StateSplash implements State {
             splash[0] = Image.createImage("/Image/splash/ub.png");
             splash[1] = Image.createImage("/Image/splash/ptiik.png");
             splash[2] = Image.createImage("/Image/splash/labgame.png");
-            splash[3] = Image.createImage("/Image/splash/present.png");
+            splash[3] = Image.createImage("/Image/splash/pembuat.png");
             this.splash = splash;
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -46,14 +46,13 @@ public class StateSplash implements State {
             page++;
             timeout = 30;
         }
-        
         if(page > 3) {
             c.pindahState(c.stateMenu);
         }
     }
 
     public void updateGambar(Graphics g) {
-        g.drawImage(splash[page], 0, 0, 0);
+        if(page <= 3) g.drawImage(splash[page], 0, 0, 0);
     }
 
     public void hapusResource() {

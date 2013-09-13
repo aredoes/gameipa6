@@ -40,10 +40,12 @@ public class StateLevel4 implements State {
         tembak = false;
         over = false;
         ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
+        }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         c.ins.penyelamat.setPosition(c.getWidth() / 2 - c.ins.penyelamat.getWidth() / 2 + xPenyelamat, 50);
         c.ins.pencuri.setPosition(c.getWidth() / 2 - c.ins.pencuri.getWidth() / 2 + xPencuri, yPencuri);
         yPencuri -= 1 + level;

@@ -29,23 +29,25 @@ public class StateLevel6 implements State {
 
     public void inisialisasi() {
         try {
-            i = 0;
-            j = 0;
-            tugas = 0;
-            time = 60;
-            win = false;
-            gagal = false;
-            waktuHabis = false;
             gmb = Image.createImage("/Image/bab6/panci.png");
-            over = false;
-            ov = 0;
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+        i = 0;
+        j = 0;
+        tugas = 0;
+        time = 60;
+        win = false;
+        gagal = false;
+        waktuHabis = false;
+        over = false;
+        ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
         }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         if (tugas > 0 && !win) {
             time--;
         }

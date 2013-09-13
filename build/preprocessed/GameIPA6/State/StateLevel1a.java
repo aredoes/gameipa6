@@ -16,7 +16,6 @@ public class StateLevel1a implements State {
     private Canvas c;
     private boolean salah, benar;
     private int x, i;
-    
     //nyawa habis
     private boolean over;
     private int ov;
@@ -30,10 +29,12 @@ public class StateLevel1a implements State {
         benar = false;
         over = false;
         ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
+        }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         if (c.t.life == 0) {
             over = true;
             ov++;
@@ -88,6 +89,10 @@ public class StateLevel1a implements State {
     }
 
     public void hapusResource() {
+        c.ins.balok = null;
+        c.ins.ular = null;
+        c.ins.cicak = null;
+        c.ins.bebek = null;
         c.getAudioManager().stopAll();
     }
 
@@ -98,7 +103,7 @@ public class StateLevel1a implements State {
                 this.x = 0;
                 salah = true;
                 c.getAudioManager().playSample(c.salah);
-                
+
             }
             if (x > 100 && y > 287 && x < 138 && y < 323) {
                 benar = true;

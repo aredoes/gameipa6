@@ -36,12 +36,12 @@ public class StateLoadingLevel6 implements State {
     }
 
     public void updateLogika() {
-        if (count > 4) {
+        if (count > 3) {
             page = 2;
         } else {
             try {
                 c.ins.bab6(count);
-                Thread.sleep(1200);
+                Thread.sleep(1600);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (InterruptedException ex) {
@@ -52,7 +52,7 @@ public class StateLoadingLevel6 implements State {
     }
 
     public void updateGambar(Graphics g) {
-        g.setColor(255, 255, 0);
+        g.setColor(0xccfaff);
         g.fillRect(0, 0, c.getWidth(), c.getHeight());
         g.setColor(0, 0, 0);
 

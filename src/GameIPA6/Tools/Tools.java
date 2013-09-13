@@ -23,7 +23,7 @@ import javax.microedition.media.Player;
 public class Tools {
 
     public int life = 3;
-    public int level = 0;
+    public int level = 9;
     public Image imgLife, imgExit;
 
     public Tools() {

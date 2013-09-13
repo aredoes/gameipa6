@@ -38,10 +38,12 @@ public class StateLevel2 implements State {
         ovrm = false;
         over = false;
         ov = 0;
+        if (!c.silent) {
+            c.getAudioManager().loopSample(c.backsound);
+        }
     }
 
     public void updateLogika() {
-//        c.getAudioManager().playSample(c.backsound1);
         if (c.t.life == 0) {
             over = true;
             ov++;

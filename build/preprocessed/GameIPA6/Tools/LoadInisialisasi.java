@@ -229,15 +229,12 @@ public class LoadInisialisasi {
                 pilih = Image.createImage("/Image/bab6/pilih.png");
                 break;
             case (1):
-                gmb = Image.createImage("/Image/bab8/bab8hint.png");
-                break;
-            case (2):
                 cek = Image.createImage("/Image/Icon/next.png");
                 break;
-            case (3):
+            case (2):
                 story1 = Image.createImage("/Image/bab6/story1.png");
                 break;
-            case (4):
+            case (3):
                 story2 = Image.createImage("/Image/bab6/story2.png");
                 break;
         }
@@ -288,6 +285,9 @@ public class LoadInisialisasi {
                 break;
             case (5):
                 cek = Image.createImage("/Image/Icon/next.png");
+                break;
+            case (6):
+                gmb = Image.createImage("/Image/bab8/bab8hint.png");
                 break;
         }
     }
