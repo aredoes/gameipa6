@@ -8,6 +8,7 @@ package GameIPA6.Control;
 //import GameIPA6.Tools.Backsound;
 import GameIPA6.State.*;
 import GameIPA6.Tools.AudioManager;
+import GameIPA6.Tools.FPS;
 import GameIPA6.Tools.LoadInisialisasi;
 import GameIPA6.Tools.Tools;
 import javax.microedition.lcdui.Graphics;
@@ -27,6 +28,9 @@ public class Canvas extends GameCanvas implements Runnable {
 //    public Backsound s;
 //    public SoundEfect sm;
     private AudioManager audioManager;
+    private FPS fpsCounter;
+    Runtime rt;
+    private boolean fps = false;
     //sound
     public boolean silent = false;
     public final String salah = "/Sound/button-10.wav";
@@ -73,6 +77,10 @@ public class Canvas extends GameCanvas implements Runnable {
         this.t = new Tools();        
 //        this.s = new Backsound();
         this.ins = new LoadInisialisasi();
+        
+        fpsCounter = FPS.getInstance();
+        rt = Runtime.getRuntime();
+        
         audioManager = AudioManager.getInstance();
 
         stateSplash = new StateSplash(this);
@@ -89,6 +97,11 @@ public class Canvas extends GameCanvas implements Runnable {
             try {        
                 stateSekarang.updateLogika();
                 stateSekarang.updateGambar(g);
+                // fps button
+                g.setColor(0, 0, 255);
+                g.fillArc(this.getWidth()/2 - 10, 10, 20, 20, 0, 360);
+                // end fps button
+                if(fps) debug(g);
                 if(isPindah){
                     stateSebelumnya = stateSekarang;
                     stateSekarang = stateTemp;
@@ -109,6 +122,10 @@ public class Canvas extends GameCanvas implements Runnable {
 
     protected void pointerPressed(int x, int y) {
         stateSekarang.tapEvent(x, y);
+        if(x > this.getWidth()/2 - 10 && x < this.getWidth()/2 + 10 && y > 10 && y < 30){
+            if(fps) fps = false; 
+            else fps = true;
+        }
     }
 
     public void pindahState(State state) {
@@ -132,5 +149,18 @@ public class Canvas extends GameCanvas implements Runnable {
 
     public AudioManager getAudioManager() {
         return audioManager;
+    }
+    
+    private void debug(Graphics g) {  
+        fpsCounter.tick();  
+        int w = this.getWidth()/2; 
+        int h = this.getHeight()/2 - 25;
+        g.setColor(0, 0, 0);
+        g.fillRect(this.getWidth()/2 - 75, this.getHeight()/2 - 50, 150, 100);
+        g.setColor(255, 255, 255);
+        g.drawString("DEBUG", w, h, Graphics.BASELINE | Graphics.HCENTER);        
+        g.drawString("~used:" + ((rt.totalMemory()-rt.freeMemory())/1024) + "KB", w, h+20, Graphics.BASELINE | Graphics.HCENTER);
+        g.drawString("~free:" + (rt.freeMemory()/1024) + "KB", w, h+40, Graphics.BASELINE | Graphics.HCENTER);
+        g.drawString("~fps:"  + fpsCounter.getFPS(), w, h+60, Graphics.BASELINE | Graphics.HCENTER);
     }
 }
