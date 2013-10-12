@@ -42,12 +42,10 @@ public class StateLevel6 implements State {
         waktuHabis = false;
         over = false;
         ov = 0;
-        if (!c.silent) {
-            c.getAudioManager().loopSample(c.backsound);
-        }
     }
 
     public void updateLogika() {
+        c.s.play(c.s.backsound1);
         if (tugas > 0 && !win) {
             time--;
         }
@@ -58,7 +56,7 @@ public class StateLevel6 implements State {
         if (c.t.life == 0) {
             over = true;
             ov++;
-            if (ov > 15) {
+            if (ov > 30) {
                 c.pindahState(c.stateLevel);
                 c.t.life = 3;
             }
@@ -112,7 +110,7 @@ public class StateLevel6 implements State {
             if (gagal) {
                 c.t.win(g, c, false);
                 j++;
-                if (j > 8) {
+                if (j > 30) {
                     gagal = false;
                     j = 0;
                 }
@@ -123,8 +121,8 @@ public class StateLevel6 implements State {
             if (win) {
                 c.t.win(g, c, true);
                 i++;
-                if (i > 8) {
-                    c.getAudioManager().playSample(c.berubah);
+                if (i > 30) {
+                    c.s.play(c.s.pedang);
                     if (c.t.level == 5) {
                         if (c.t.level == 5) {
                             c.t.level++;
@@ -162,10 +160,10 @@ public class StateLevel6 implements State {
                 c.t.tapPause(x, y, c);
                 if (x > 21 && y > 272 && x < 51 && y < 324) {
                     if (tugas == 1) {
-                        c.getAudioManager().playSample(c.menu);
+                        c.s.play(c.s.menu);
                         tugas++;
                     } else {
-                        c.getAudioManager().playSample(c.salah);
+                        c.s.play(c.s.menu);
                         gagal = true;
                         c.t.life--;
                         j = 0;
@@ -173,10 +171,10 @@ public class StateLevel6 implements State {
                 }
                 if (x > 62 && y > 272 && x < 96 && y < 324) {
                     if (tugas == 0) {
-                        c.getAudioManager().playSample(c.menu);
+                        c.s.play(c.s.menu);
                         tugas++;
                     } else {
-                        c.getAudioManager().playSample(c.salah);
+                        c.s.play(c.s.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;
@@ -184,10 +182,10 @@ public class StateLevel6 implements State {
                 }
                 if (x > 106 && y > 272 && x < 133 && y < 324) {
                     if (tugas == 3) {
-                        c.getAudioManager().playSample(c.menu);
+                        c.s.play(c.s.menu);
                         tugas++;
                     } else {
-                        c.getAudioManager().playSample(c.salah);
+                        c.s.play(c.s.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;
@@ -195,10 +193,10 @@ public class StateLevel6 implements State {
                 }
                 if (x > 141 && y > 272 && x < 177 && y < 324) {
                     if (tugas == 4) {
-                        c.getAudioManager().playSample(c.menu);
+                        c.s.play(c.s.menu);
                         tugas++;
                     } else {
-                        c.getAudioManager().playSample(c.salah);
+                        c.s.play(c.s.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;
@@ -206,10 +204,10 @@ public class StateLevel6 implements State {
                 }
                 if (x > 184 && y > 274 && x < 220 && y < 326) {
                     if (tugas == 2) {
-                        c.getAudioManager().playSample(c.menu);
+                        c.s.play(c.s.menu);
                         tugas++;
                     } else {
-                        c.getAudioManager().playSample(c.salah);
+                        c.s.play(c.s.salah);
                         gagal = true;
                         c.t.life--;
                         j = 0;

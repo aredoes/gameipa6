@@ -40,12 +40,10 @@ public class StateLevel4 implements State {
         tembak = false;
         over = false;
         ov = 0;
-        if (!c.silent) {
-            c.getAudioManager().loopSample(c.backsound);
-        }
     }
 
     public void updateLogika() {
+        c.s.play(c.s.backsound1);
         c.ins.penyelamat.setPosition(c.getWidth() / 2 - c.ins.penyelamat.getWidth() / 2 + xPenyelamat, 50);
         c.ins.pencuri.setPosition(c.getWidth() / 2 - c.ins.pencuri.getWidth() / 2 + xPencuri, yPencuri);
         yPencuri -= 1 + level;
@@ -56,7 +54,7 @@ public class StateLevel4 implements State {
         }
 
         if (yPencuri < 0) {
-            c.getAudioManager().playSample(c.argh);
+            c.s.play(c.s.argh);
             c.t.life--;
             yPencuri = c.getHeight();
             xP = true;
@@ -93,7 +91,7 @@ public class StateLevel4 implements State {
         if (c.t.life == 0) {
             over = true;
             ov++;
-            if (ov > 15) {
+            if (ov > 30) {
                 c.pindahState(c.stateLevel);
                 c.t.life = 3;
             }
@@ -102,7 +100,7 @@ public class StateLevel4 implements State {
     }
 
     public void updateGambar(Graphics g) {
-        c.t.background(g, c, 0xffffff);
+        g.drawImage(c.ins.background, c.getWidth() / 2, c.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
 
         c.ins.penyelamat.paint(g);
         c.ins.penyelamat.nextFrame();
@@ -121,10 +119,10 @@ public class StateLevel4 implements State {
         c.t.petunjuk(g, c, "Selamatkan hewan langka", "dari pemburu liar");
 
         if (win) {
+            c.t.win(g, c, true);
             i++;
-            if (i > 8) {
-                c.getAudioManager().playSample(c.berubah);
-                c.t.win(g, c, true);
+            if (i > 30) {
+                c.s.play(c.s.pedang);
                 i = 0;
                 if (c.t.level == 3) {
                     c.t.level++;
@@ -152,10 +150,10 @@ public class StateLevel4 implements State {
 
             if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() - 60 && y < c.getHeight() - 60) {
                 if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.xPenyelamat > -60) {
-                    c.getAudioManager().playSample(c.menu);
+                    c.s.play(c.s.menu);
                     this.xPenyelamat -= 15;
                 } else if (x > c.getWidth() - c.ins.imgRightArrow.getWidth() && x < c.getWidth() && this.xPenyelamat < 60) {
-                    c.getAudioManager().playSample(c.menu);
+                    c.s.play(c.s.menu);
                     this.xPenyelamat += 15;
                 }
             }

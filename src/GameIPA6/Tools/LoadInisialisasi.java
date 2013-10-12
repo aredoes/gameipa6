@@ -26,6 +26,7 @@ public class LoadInisialisasi {
     public Sprite orang, penebang;
     //bab4
     public Sprite pencuri, penyelamat, peluru;
+    public Image background;
     //bab5
     public Image bak, air, pipa, apibirukanan, apimerahkanan, apibiru, apimerah;
     //bab6
@@ -184,6 +185,9 @@ public class LoadInisialisasi {
                 break;
             case (9):
                 cek = Image.createImage("/Image/Icon/next.png");
+                break;
+            case (10):
+                background = Image.createImage("/Image/bab4/background.png");
                 break;
         }
     }
@@ -359,6 +363,7 @@ public class LoadInisialisasi {
         imgRightArrow = null;
         imgFire = null;
         gd = null;
+        background = null;
     }
 
     public void hapusBab5() {

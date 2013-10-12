@@ -19,12 +19,18 @@ public class StateLoadingLevel9 implements State {
     private int page, story, count;
     private String kalimat[] = {"", "", "", "", ""};
     private boolean next;
+    private Image bgloading;
 
     public StateLoadingLevel9(Canvas c) {
         this.c = c;
     }
 
     public void inisialisasi() {
+        try {
+            bgloading = Image.createImage("/Image/bgloading.png");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         count = 0;
         page = 1;
         story = 1;
@@ -53,10 +59,9 @@ public class StateLoadingLevel9 implements State {
     }
 
     public void updateGambar(Graphics g) {
-        g.setColor(0xccfaff);
-        g.fillRect(0, 0, c.getWidth(), c.getHeight());
-        g.setColor(0, 0, 0);
+        g.drawImage(bgloading, c.getWidth() / 2, c.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
 
+        g.setColor(0, 0, 0);
         g.drawString("Level 9", c.getWidth() / 2, 50, Graphics.HCENTER | Graphics.BASELINE);
         g.drawString("TATA SURYA", c.getWidth() / 2, 70, Graphics.HCENTER | Graphics.BASELINE);
 
@@ -104,6 +109,7 @@ public class StateLoadingLevel9 implements State {
         c.ins.ttsurya = null;
         c.ins.story1 = null;
         c.ins.story2 = null;
+        bgloading = null;
     }
 
     public void tapEvent(int x, int y) {
@@ -113,7 +119,7 @@ public class StateLoadingLevel9 implements State {
                     story++;
                 } else {
                     next = true;
-                    c.getAudioManager().playSample(c.berubah);
+                    c.s.play(c.s.pedang);
                 }
             }
         }

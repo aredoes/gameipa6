@@ -33,12 +33,10 @@ public class StateLevel1b implements State {
         yh = c.getHeight() + c.ins.balokHalang1.getHeight();
         over = false;
         ov = 0;
-        if (!c.silent) {
-            c.getAudioManager().loopSample(c.backsound);
-        }
     }
 
     public void updateLogika() {
+        c.s.play(c.s.backsound1);
         c.ins.cicakSprite.setPosition(c.getWidth() / 2 - c.ins.cicakSprite.getWidth() / 2 + x, c.getHeight() - c.ins.cicakSprite.getHeight() - c.ins.imgLeftArrow.getHeight());
         c.ins.balokHalang1.setPosition(c.getWidth() / 2 - c.ins.balokHalang1.getWidth() / 2 + xh1, yh - c.ins.balokHalang1.getHeight());
         c.ins.balokHalang2.setPosition(c.getWidth() / 2 - c.ins.balokHalang2.getWidth() / 2 + xh2, yh - c.ins.balokHalang2.getHeight());
@@ -53,8 +51,8 @@ public class StateLevel1b implements State {
         if (c.ins.cicakSprite.collidesWith(c.ins.balokHalang1, true) || c.ins.cicakSprite.collidesWith(c.ins.balokHalang2, true)) {
             c.ins.cicakSprite.setFrameSequence(c.ins.gd.CicakSpriteHit);
             i++;
-            if (i > 8) {
-                c.getAudioManager().playSample(c.argh);
+            if (i > 15) {
+                c.s.play(c.s.argh);
                 xh1 = c.t.randomInt();
                 xh2 = c.t.randomInt2();
                 yh = 0;
@@ -69,7 +67,7 @@ public class StateLevel1b implements State {
         if (c.t.life == 0) {
             over = true;
             ov++;
-            if (ov > 15) {
+            if (ov > 30) {
                 c.pindahState(c.stateLevel);
                 c.t.life = 3;
             }
@@ -95,8 +93,8 @@ public class StateLevel1b implements State {
         if (finish > 5) {
             c.t.win(g, c, true);
             j++;
-            if (j > 8) {
-                c.getAudioManager().playSample(c.berubah);
+            if (j > 30) {
+                c.s.play(c.s.pedang);
                 if (c.t.level == 0) {
                     c.t.level++;
                 }
@@ -125,10 +123,10 @@ public class StateLevel1b implements State {
             if (y > c.getHeight() - c.ins.imgLeftArrow.getHeight() && y < c.getHeight() && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang1, true) && !c.ins.cicakSprite.collidesWith(c.ins.balokHalang2, true) && finish <= 5) {
                 if (x > 0 && x < c.ins.imgLeftArrow.getWidth() && this.x > -75) {
                     this.x -= 25;
-                    c.getAudioManager().playSample(c.menu);
+                    c.s.play(c.s.menu);
                 } else if (x > c.getWidth() - c.ins.imgRightArrow.getWidth() && x < c.getWidth() && this.x < 75) {
                     this.x += 25;
-                    c.getAudioManager().playSample(c.menu);
+                    c.s.play(c.s.menu);
                 }
             }
         }

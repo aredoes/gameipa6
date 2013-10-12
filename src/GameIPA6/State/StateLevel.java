@@ -5,7 +5,6 @@
 package GameIPA6.State;
 
 import GameIPA6.Control.Canvas;
-import GameIPA6.Tools.AudioManager;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
@@ -25,12 +24,12 @@ public class StateLevel implements State {
 
     public void inisialisasi() {
         try {
-            c.getAudioManager().stopAll();
+            c.s.stop();
             imgLevelMenu = Image.createImage("/Image/Level.png");
             imgLevelLocked = Image.createImage("/Image/Levellocked.png");
             imgExit = Image.createImage("/Image/Icon/cross.png");
-            background = Image.createImage("/Image/freepik.jpg");
-            if (c.silent == true) {
+            background = Image.createImage("/Image/bglevel.png");
+            if (c.s.getSilent() == true) {
                 imgSound = Image.createImage("/Image/Icon/soundmute.png");
             } else {
                 imgSound = Image.createImage("/Image/Icon/sound.png");
@@ -94,62 +93,61 @@ public class StateLevel implements State {
         imgLevelMenu = null;
         imgExit = null;
         imgSound = null;
-        c.getAudioManager().stopAll();
     }
 
     public void tapEvent(int x, int y) {
         c.t.tapImg(x, y, c.getWidth() - imgExit.getWidth() / 2, imgExit.getHeight() / 2, imgExit.getWidth(), imgExit.getHeight(), c, c.stateMenu);
         if (y > c.getHeight() / 2 - 110 - 60 / 2 && y < c.getHeight() / 2 - 110 + 60 / 2) {
             if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel1);
             }
             if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 0) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel2);
             }
             if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 1) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel3);
             }
         }
         if (y > c.getHeight() / 2 - 30 - 60 / 2 && y < c.getHeight() / 2 - 30 + 60 / 2) {
             if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 && c.t.level > 2) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel4);
             }
             if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 3) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel5);
             }
             if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 4) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel6);
             }
         }
         if (y > c.getHeight() / 2 + 50 - 60 / 2 && y < c.getHeight() / 2 + 50 + 60 / 2) {
             if (x > c.getWidth() / 2 - 80 - 60 / 2 && x < c.getWidth() / 2 - 80 + 60 / 2 && c.t.level > 5) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel7);
             }
             if (x > c.getWidth() / 2 - 60 / 2 && x < c.getWidth() / 2 + 60 / 2 && c.t.level > 6) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel8);
             }
             if (x > c.getWidth() / 2 + 80 - 60 / 2 && x < c.getWidth() / 2 + 80 + 60 / 2 && c.t.level > 7) {
-                c.getAudioManager().playSample(c.beep);
+                c.s.play(c.s.beep);
                 c.pindahState(c.stateLoadingLevel9);
             }
         }
         if (x > 92 && y > 313 && x < 149 && y < 368) {
-            c.silent = !c.silent;
-            AudioManager.audioEnabled = !c.silent;
             try {
-                if (c.silent == true) {
-                    c.getAudioManager().stopAll();
-                    imgSound = Image.createImage("/Image/Icon/soundmute.png");
-                } else {
+                if (c.s.getSilent() == true) {
+                    c.s.setSilent(false);
                     imgSound = Image.createImage("/Image/Icon/sound.png");
+                } else {
+                    c.s.setSilent(true);
+                    imgSound = Image.createImage("/Image/Icon/soundmute.png");
+                    c.s.stop();
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();

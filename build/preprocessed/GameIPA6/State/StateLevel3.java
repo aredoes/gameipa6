@@ -38,12 +38,10 @@ public class StateLevel3 implements State {
         waktuHabis = false;
         over = false;
         ov = 0;
-        if (!c.silent) {
-            c.getAudioManager().loopSample(c.backsound);
-        }
     }
 
     public void updateLogika() {
+        c.s.play(c.s.backsound1);
         if (xBackground == c.ins.imgBackground.getWidth()) {
             xBackground = -c.ins.imgBackground.getWidth();
         } else if (xBackground2 == c.ins.imgBackground.getWidth()) {
@@ -75,7 +73,7 @@ public class StateLevel3 implements State {
         if (c.t.life == 0) {
             over = true;
             ov++;
-            if (ov > 15) {
+            if (ov > 30) {
                 c.pindahState(c.stateLevel);
                 c.t.life = 3;
             }
@@ -115,8 +113,8 @@ public class StateLevel3 implements State {
             if (finish) {
                 c.t.win(g, c, true);
                 i++;
-                if (i > 8) {
-                    c.getAudioManager().playSample(c.berubah);
+                if (i > 30) {
+                    c.s.play(c.s.pedang);
                     if (c.t.level == 2) {
                         c.t.level++;
                     }
@@ -153,7 +151,7 @@ public class StateLevel3 implements State {
                 //arah
                 if (y > c.getHeight() - c.ins.imgRun.getHeight() && y < c.getHeight() && !finish) {
                     if (x > c.getWidth() - c.ins.imgRun.getWidth() && x < c.getWidth()) {
-                        c.getAudioManager().playSample(c.menu);
+                        c.s.play(c.s.menu);
                         this.x += 4;
                         c.ins.orang.nextFrame();
                     }

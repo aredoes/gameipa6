@@ -4,12 +4,10 @@
  */
 package GameIPA6.Control;
 
-//import GameIPA6.Tools.SoundEfect;
-//import GameIPA6.Tools.Backsound;
 import GameIPA6.State.*;
-import GameIPA6.Tools.AudioManager;
 import GameIPA6.Tools.FPS;
 import GameIPA6.Tools.LoadInisialisasi;
+import GameIPA6.Tools.Sound;
 import GameIPA6.Tools.Tools;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
@@ -25,22 +23,10 @@ public class Canvas extends GameCanvas implements Runnable {
     public State stateSekarang, stateTemp, stateSebelumnya, statePause, stateSplash, stateMenu, stateLoading, stateLoadingLevel1, stateLoadingLevel2, stateLoadingLevel3, stateLoadingLevel4, stateLoadingLevel5, stateLoadingLevel6, stateLoadingLevel7, stateLoadingLevel8, stateLoadingLevel9, stateLevel, stateLevel1aa, stateLevel1ab, stateLevel2, stateLevel3, stateLevel4, stateLevel5, stateLevel6, stateLevel7, stateLevel8, stateLevel9;
     public Tools t;
     public LoadInisialisasi ins;
-//    public Backsound s;
-//    public SoundEfect sm;
-    private AudioManager audioManager;
+    public Sound s;
     private FPS fpsCounter;
     Runtime rt;
     private boolean fps = false;
-    //sound
-    public boolean silent = false;
-    public final String salah = "/Sound/button-10.wav";
-    public final String menu = "/Sound/button-30.wav";
-    public final String berubah = "/Sound/Pedang.wav";
-    public final String cling = "/Sound/Cling.wav";
-    public final String beep = "/Sound/button-9.wav";
-    public final String argh = "/Sound/arg.wav";
-    public final String backsound = "/Sound/backsound.mp3";
-    //sound
 
     public void setIsGameJalan(boolean isGameJalan) {
         this.isGameJalan = isGameJalan;
@@ -75,20 +61,15 @@ public class Canvas extends GameCanvas implements Runnable {
         stateMenu = new StateMenu(this);
 
         this.t = new Tools();        
-//        this.s = new Backsound();
+        this.s = new Sound();
         this.ins = new LoadInisialisasi();
         
         fpsCounter = FPS.getInstance();
         rt = Runtime.getRuntime();
-        
-        audioManager = AudioManager.getInstance();
-
+       
         stateSplash = new StateSplash(this);
         stateSplash.inisialisasi();
         stateSekarang = stateSplash;
-//        stateMenu = new StateMenu(this);
-//        stateMenu.inisialisasi();
-//        stateSekarang = stateMenu;
     }
 
     public void run() {
@@ -145,10 +126,6 @@ public class Canvas extends GameCanvas implements Runnable {
         System.gc();
         stateSekarang = stateSebelumnya;
         System.gc();
-    }
-
-    public AudioManager getAudioManager() {
-        return audioManager;
     }
     
     private void debug(Graphics g) {  

@@ -19,6 +19,7 @@ public class StateLoadingLevel1 implements State {
     private int page, story, count, pelajaran;
     private String kalimat[] = {"", "", ""};
     private boolean next;
+    private Image bgloading;
 
     public StateLoadingLevel1(Canvas c) {
         this.c = c;
@@ -26,8 +27,8 @@ public class StateLoadingLevel1 implements State {
 
     public void inisialisasi() {
         try {
-            Thread.sleep(40);
-        } catch (InterruptedException ex) {
+            bgloading = Image.createImage("/Image/bgloading.png");
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         count = 0;
@@ -67,10 +68,9 @@ public class StateLoadingLevel1 implements State {
     }
 
     public void updateGambar(Graphics g) {
-        g.setColor(0xccfaff);
-        g.fillRect(0, 0, c.getWidth(), c.getHeight());
-        g.setColor(0, 0, 0);
+        g.drawImage(bgloading, c.getWidth() / 2, c.getHeight() / 2, Graphics.HCENTER | Graphics.VCENTER);
 
+        g.setColor(0, 0, 0);
         g.drawString("Level 1", c.getWidth() / 2, 50, Graphics.HCENTER | Graphics.BASELINE);
         g.drawString("CIRI KHUSUS MAHLUK HIDUP", c.getWidth() / 2, 70, Graphics.HCENTER | Graphics.BASELINE);
 
@@ -120,6 +120,7 @@ public class StateLoadingLevel1 implements State {
         c.ins.cek = null;
         c.ins.story1 = null;
         c.ins.story2 = null;
+        bgloading = null;
     }
 
     public void tapEvent(int x, int y) {
@@ -127,10 +128,10 @@ public class StateLoadingLevel1 implements State {
             if (x > c.getWidth() - c.ins.cek.getWidth() && x < c.getWidth() && y > c.getHeight() - c.ins.cek.getHeight() && y < c.getHeight()) {
                 if (story < 3) {
                     story++;
-                    c.getAudioManager().playSample(c.menu);
+                    c.s.play(c.s.menu);
                 } else {
                     next = true;
-                    c.getAudioManager().playSample(c.berubah);
+                    c.s.play(c.s.pedang);
                 }
             }
         }

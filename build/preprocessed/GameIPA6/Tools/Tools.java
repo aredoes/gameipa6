@@ -45,7 +45,7 @@ public class Tools {
     public void tapPause(int x, int y, Canvas c){
         if (x > 0 && x < 40 && y > 0 && y < 40) {
             c.pause(c.statePause);
-            c.getAudioManager().playSample(c.beep);
+            c.s.play(c.s.beep);
         }
     }
 

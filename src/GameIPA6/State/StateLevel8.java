@@ -20,6 +20,12 @@ public class StateLevel8 implements State {
     //nyawa habis
     private boolean over;
     private int ov;
+    //posisi jendela
+    private int kx = 64, ky = 140;
+    private int mkx = 64, mky = 196;
+    private int ox = 123, oy = 140;
+    private int ax = 181, ay = 140;
+    private int mdx = 181, mdy = 197;
 
     public StateLevel8(Canvas c) {
         this.c = c;
@@ -41,12 +47,10 @@ public class StateLevel8 implements State {
         tugasSelesai = 0;
         over = false;
         ov = 0;
-        if (!c.silent) {
-            c.getAudioManager().loopSample(c.backsound);
-        }
     }
 
     public void updateLogika() {
+        c.s.play(c.s.backsound1);
         if (!win) {
             if (kakak) {
                 limit--;
@@ -180,22 +184,22 @@ public class StateLevel8 implements State {
             g.setColor(0x6e380c);
             g.fillRect(0, 200, c.getWidth(), 80);
             g.drawImage(c.ins.rumah, c.getWidth() / 2, c.ins.rumah.getHeight() / 2 + 50, Graphics.HCENTER | Graphics.VCENTER);
-
+            
             //jendela
             if (kakak) {
-                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 30, c.ins.jendela.getHeight() / 2 + 108, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, kx, ky, Graphics.HCENTER | Graphics.VCENTER);
             }
             if (makan) {
-                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 30, c.ins.jendela.getHeight() / 2 + 180, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, mkx, mky, Graphics.HCENTER | Graphics.VCENTER);
             }
             if (ortu) {
-                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 97, c.ins.jendela.getHeight() / 2 + 128, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, ox, oy, Graphics.HCENTER | Graphics.VCENTER);
             }
             if (adik) {
-                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 162, c.ins.jendela.getHeight() / 2 + 108, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, ax, ay, Graphics.HCENTER | Graphics.VCENTER);
             }
             if (mandi) {
-                g.drawImage(c.ins.jendela, c.ins.jendela.getWidth() / 2 + 162, c.ins.jendela.getHeight() / 2 + 180, Graphics.HCENTER | Graphics.VCENTER);
+                g.drawImage(c.ins.jendela, mdx, mdy, Graphics.HCENTER | Graphics.VCENTER);
             }
 
             //tugas1
@@ -217,8 +221,8 @@ public class StateLevel8 implements State {
             if (win) {
                 c.t.win(g, c, true);
                 i++;
-                if (i > 8) {
-                    c.getAudioManager().playSample(c.berubah);
+                if (i > 30) {
+                    c.s.play(c.s.pedang);
                     if (c.t.level == 7) {
                         c.t.level++;
                     }
@@ -248,40 +252,40 @@ public class StateLevel8 implements State {
                 }
             } else if (!win) {
                 c.t.tapPause(x, y, c);
-                if (x > 33 && x < 78 && y > 112 && y < 152) {
-                    c.getAudioManager().playSample(c.menu);
+                if (x > kx - c.ins.jendela.getWidth()/2 && x < kx + c.ins.jendela.getWidth()/2 && y > ky - c.ins.jendela.getHeight()/2 && y < ky + c.ins.jendela.getHeight()/2) {
+                    c.s.play(c.s.menu);
                     if (kakak) {
                         kakak = false;
                     } else {
                         kakak = true;
                     }
                 }
-                if (x > 33 && x < 78 && y > 185 && y < 222) {
-                    c.getAudioManager().playSample(c.menu);
+                if (x > mkx - c.ins.jendela.getWidth()/2 && x < mkx + c.ins.jendela.getWidth()/2 && y > mky - c.ins.jendela.getHeight()/2 && y < mky + c.ins.jendela.getHeight()/2) {
+                    c.s.play(c.s.menu);
                     if (makan) {
                         makan = false;
                     } else {
                         makan = true;
                     }
                 }
-                if (x > 100 && x < 145 && y > 134 && y < 172) {
-                    c.getAudioManager().playSample(c.menu);
+                if (x > ox - c.ins.jendela.getWidth()/2 && x < ox + c.ins.jendela.getWidth()/2 && y > oy - c.ins.jendela.getHeight()/2 && y < oy + c.ins.jendela.getHeight()/2) {
+                    c.s.play(c.s.menu);
                     if (ortu) {
                         ortu = false;
                     } else {
                         ortu = true;
                     }
                 }
-                if (x > 166 && x < 210 && y > 112 && y < 152) {
-                    c.getAudioManager().playSample(c.menu);
+                if (x > ax - c.ins.jendela.getWidth()/2 && x < ax + c.ins.jendela.getWidth()/2 && y > ay - c.ins.jendela.getHeight()/2 && y < ay + c.ins.jendela.getHeight()/2) {
+                    c.s.play(c.s.menu);
                     if (adik) {
                         adik = false;
                     } else {
                         adik = true;
                     }
                 }
-                if (x > 166 && x < 210 && y > 185 && y < 222) {
-                    c.getAudioManager().playSample(c.menu);
+                if (x > mdx - c.ins.jendela.getWidth()/2 && x < mdx + c.ins.jendela.getWidth()/2 && y > mdy - c.ins.jendela.getHeight()/2 && y < mdy + c.ins.jendela.getHeight()/2) {
+                    c.s.play(c.s.menu);
                     if (mandi) {
                         mandi = false;
                     } else {
